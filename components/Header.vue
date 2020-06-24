@@ -1,13 +1,18 @@
 <template>
-	<header>
-		<div class="container mx-auto flex">
+	<header class="border-b p-4">
+		<div class="container mx-auto flex justify-between">
 			<h1>Movie App</h1>
 			<nav>
-				<ul class="inline-block">
-					<li>Menu</li>
-					<li>Menu</li>
-					<li>Menu</li>
-					<li>Menu</li>
+				<ul class="flex">
+					<li class="pl-4">
+						Menu
+					</li>
+					<li class="pl-4">
+						Menu
+					</li>
+					<li class="pl-4">
+						Menu
+					</li>
 				</ul>
 			</nav>
 		</div>
