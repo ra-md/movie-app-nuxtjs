@@ -17,6 +17,8 @@ module.exports = {
   rules: {
     'semi': ['error', 'always'],
     'no-tabs': 'off',
-    'vue/html-indent': 'off'
+    'vue/html-indent': 'off',
+    'indent': 'off',
+    'space-before-function-paren': 'off'
   }
 }
