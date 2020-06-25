@@ -19,6 +19,7 @@ module.exports = {
     'no-tabs': 'off',
     'vue/html-indent': 'off',
     'indent': 'off',
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    'no-console': 'off'
   }
 }
