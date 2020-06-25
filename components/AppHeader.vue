@@ -1,0 +1,38 @@
+<template>
+	<div>
+		<header class="md:hidden bg-red-600 fixed top-0 left-0 right-0 p-4 z-40">
+			<div class="container mx-auto flex justify-between">
+				<button @click="openSidebar">
+					open
+				</button>
+				<h1 class="font-bold">
+					Movie App
+				</h1>
+				<button>
+					search
+				</button>
+			</div>
+		</header>
+		<SideBar ref="sidebar" />
+	</div>
+</template>
+
+<script>
+import SideBar from './SideBar';
+
+export default {
+	name: 'AppHeader',
+	components: {
+		SideBar
+	},
+	data() {
+		return {
+		};
+	},
+	methods: {
+		openSidebar() {
+			this.$refs.sidebar.openSidebar();
+		}
+	}
+};
+</script>
