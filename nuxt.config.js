@@ -35,6 +35,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    { src: '~/plugins/vue-horizontal-list.js', mode: 'client' }
   ],
   /*
   ** Auto import components
