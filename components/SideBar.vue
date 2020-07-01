@@ -1,18 +1,18 @@
 <template>
 	<div>
-		<div :class="{'openOverlay': sidebar}" class="overlay" @click="closeSidebar" />
-		<div :class="{'openSidebar': sidebar}" class="sidebar fixed left-0 top-0 h-full z-50 bg-white">
+		<div :class="{'openOverlay': sidebar}" class="overlay" @click="toggleSidebar" />
+		<div :class="{'openSidebar': sidebar}" class="sidebar fixed top-0 h-full z-50 bg-white">
 			<ul>
-				<li class="px-20 py-2 text-left">
+				<li>
 					menu
 				</li>
-				<li class="px-20 py-2 text-left">
+				<li>
 					menu
 				</li>
-				<li class="px-20 py-2 text-left">
+				<li>
 					menu
 				</li>
-				<li class="bg-red-500 px-20 py-2 text-left">
+				<li>
 					menu
 				</li>
 			</ul>
@@ -28,17 +28,19 @@ export default {
 		};
 	},
 	methods: {
-		openSidebar() {
-			this.sidebar = true;
-		},
-		closeSidebar() {
-			this.sidebar = false;
+		toggleSidebar() {
+			this.sidebar = !this.sidebar;
 		}
 	}
 };
 </script>
 
-<style>
+<style scoped>
+	.sidebar {
+		transition: left .5s;
+		left: -15em;
+	}
+
 	.openOverlay {
 		display: block!important;
 	}
@@ -47,22 +49,17 @@ export default {
 		left: 0!important;
 	}
 
-	.overlay {
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
-		background: rgba(0,0,0,0.6);
-		transition: display .5s;
-		display: none;
-		z-index: 49;
+	li {
+		@apply px-20 py-2 text-left;
 	}
 
-	@media (max-width: 768px) {
+	.overlay {
+		@apply fixed top-0 bottom-0 right-0 left-0 bg-black bg-opacity-50 hidden z-40;
+	}
+
+	@media (min-width: 768px) {
 		.sidebar {
-			transition: left .5s;
-			left: -15em;
+			left: 0em;
 		}
 	}
 </style>

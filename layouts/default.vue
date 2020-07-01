@@ -1,7 +1,7 @@
 <template>
   <div>
     <AppHeader />
-    <div class="padding-left mt-16 container mx-auto">
+    <div class="padding-left mt-16 md:mt-0 container mx-auto md:bg-blue-600">
       <Nuxt />
     </div>
   </div>
@@ -31,7 +31,7 @@ html {
 
 @media (min-width: 768px) {
   .padding-left {
-    padding-left: 12em;
+    padding-left: 12.5em;
   }
 }
 </style>
