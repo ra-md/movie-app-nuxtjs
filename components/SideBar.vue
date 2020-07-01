@@ -4,7 +4,7 @@
 		<div :class="{'openSidebar': sidebar}" class="sidebar fixed top-0 h-full z-50 bg-white">
 			<ul>
 				<li>
-					menu
+					Home
 				</li>
 				<li>
 					menu
