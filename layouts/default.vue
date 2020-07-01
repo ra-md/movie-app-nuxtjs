@@ -1,7 +1,7 @@
 <template>
   <div>
     <AppHeader />
-    <div class="padding-left mt-16 md:mt-0 container mx-auto md:bg-blue-600">
+    <div class="padding-left mt-16 md:mt-0 container mx-auto">
       <Nuxt />
     </div>
   </div>
@@ -27,6 +27,22 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+
+body {
+  background-color: #f7fafc;
+}
+
+h1 {
+  @apply text-2xl;
+}
+
+h2 {
+  @apply text-xl;
+}
+
+h3 {
+  @apply text-lg;
 }
 
 @media (min-width: 768px) {
