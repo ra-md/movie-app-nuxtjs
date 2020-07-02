@@ -37,7 +37,7 @@ export default {
 
 <style scoped>
 	.sidebar {
-		transition: left .5s;
+		transition: left .3s;
 		left: -15em;
 	}
 
