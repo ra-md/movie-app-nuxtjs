@@ -1,9 +1,7 @@
 <template>
   <div>
-		<div class="my-4 mx-2">
-			<h2>Popular movies</h2>
-			<HorizontalList :items="movies" />
-		</div>
+		<h2>Popular movies</h2>
+		<HorizontalList :items="movies" />
   </div>
 </template>
 

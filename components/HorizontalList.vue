@@ -12,8 +12,8 @@
 		>
 			<template v-slot:default="{ item }">
 				<div class="bg-white rounded-md shadow-md cursor-pointer transform transition-scale duration-200 hover:scale-105 ease-in-out">
-					<img class="rounded-t-md" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
-					<p class="p-1 whitespace-no-wrap overflow-hidden">
+					<img class="rounded-t-md aspect" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
+					<p class="whitespace-no-wrap overflow-hidden">
 						{{ item.title }}
 					</p>
 				</div>
@@ -33,3 +33,10 @@ export default {
 	}
 };
 </script>
+
+<style>
+	.vue-horizontal-list .vhl-container {
+		margin-right: 0!important;
+		margin-left: 0!important;
+	}
+</style>
