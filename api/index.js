@@ -12,4 +12,4 @@ const movies = {
 	}
 };
 
-export default { movie };
+export default { movies };
