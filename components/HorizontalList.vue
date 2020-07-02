@@ -24,7 +24,7 @@
 
 <script>
 export default {
-	name: 'Horizontal-list',
+	name: 'HorizontalList',
 	props: {
 		items: {
 			type: Array,

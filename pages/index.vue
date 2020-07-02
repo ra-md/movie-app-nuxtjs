@@ -9,7 +9,7 @@
 
 <script>
 import api from '~/api';
-import HorizontalList from '~/components/Horizontal-list.vue';
+import HorizontalList from '~/components/HorizontalList.vue';
 
 export default {
 	components: {
