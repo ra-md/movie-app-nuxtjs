@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<header class="md:hidden bg-red-600 fixed top-0 left-0 right-0 p-4 z-30">
+		<header class="md:hidden bg-red-600 fixed top-0 left-0 right-0 p-3 z-30">
 			<div class="container mx-auto flex justify-between">
 				<button @click="openSidebar">
 					open
