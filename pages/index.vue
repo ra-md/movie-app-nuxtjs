@@ -1,7 +1,11 @@
 <template>
   <div>
-		<h2>Popular movies</h2>
-		<HorizontalList :items="movies" />
+		<div>
+			<h1 class="px-4">
+				Popular movies
+			</h1>
+			<HorizontalList :items="movies" />
+		</div>
   </div>
 </template>
 
