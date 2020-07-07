@@ -1,11 +1,9 @@
 <template>
   <div>
-		<div>
-			<h1 class="px-4">
-				Popular movies
-			</h1>
-			<HorizontalList :items="movies" />
-		</div>
+		<h1 class="p-1">
+			Popular movies
+		</h1>
+		<HorizontalList :items="movies" />
   </div>
 </template>
 
@@ -26,7 +24,6 @@ export default {
 		api.movies.popular(1)
 		.then((res) => {
 			this.movies = res.data.results;
-			console.log(res);
 		});
 	}
 };
