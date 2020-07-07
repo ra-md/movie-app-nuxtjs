@@ -1,6 +1,6 @@
 <template>
 	<client-only>
-		<vue-carousel :data="data" indicator-trigger="hover" />
+		<vue-carousel class="my-4" :data="data" indicator-trigger="hover" />
 	</client-only>
 </template>
 
@@ -20,12 +20,13 @@ export default {
 
 <style>
   .example-slide {
+    @apply rounded-md;
     align-items: center;
     background-color: #666;
     color: #999;
     display: flex;
     font-size: 1.5rem;
     justify-content: center;
-    min-height: 10rem;
+    min-height: 15rem;
   }
 </style>
