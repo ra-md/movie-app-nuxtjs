@@ -7,7 +7,7 @@
 						<img class="rounded-t-md aspect" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
 						<div class="movie-title">
 							<p class="whitespace-no-wrap overflow-hidden px-1">
-								{{ item.title }}
+								{{ item.title || item.name }}
 							</p>
 						</div>
 					</div>
