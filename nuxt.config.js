@@ -35,7 +35,8 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    { src: '~/plugins/vue-horizontal-list.js', mode: 'client' }
+    { src: '~/plugins/vue-horizontal-list.js', mode: 'client' },
+    { src: '~/plugins/vue-carousel.js', mode: 'client' }
   ],
   /*
   ** Auto import components
@@ -68,5 +69,8 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    extend(config) {
+      config.resolve.alias['vue'] = 'vue/dist/vue.common'
+    }
   }
 }

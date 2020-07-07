@@ -12,6 +12,7 @@
     "lint": "npm run lint:js"
   },
   "dependencies": {
+    "@chenfengyuan/vue-carousel": "^1.0.5",
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "nuxt": "^2.13.0",

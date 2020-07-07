@@ -12,4 +12,10 @@ const movies = {
 	}
 };
 
-export default { movies };
+const tv = {
+	popular: (page) => {
+		return axios(`${API_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=${page}`);
+	}
+};
+
+export default { movies, tv };
