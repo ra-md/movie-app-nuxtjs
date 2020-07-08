@@ -18,4 +18,8 @@ const tv = {
 	}
 };
 
-export default { movies, tv };
+function trending(mediaType, time) {
+	return axios(`${API_URL}/trending/${mediaType}/${time}?api_key=${API_KEY}`);
+}
+
+export default { movies, tv, trending };
