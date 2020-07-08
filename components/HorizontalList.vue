@@ -56,12 +56,7 @@ export default {
 </script>
 
 <style>
-	.vue-horizontal-list .vhl-container {
-		margin-right: 0!important;
-		margin-left: 0!important;
-	}
-
-	.movie-title:before {
+	.movie-title::before {
 		content: '';
 		position: absolute;
 		z-index: 100;
@@ -69,5 +64,12 @@ export default {
 		width: 100%;
 		background: linear-gradient(90deg, transparent 50%, white);
 		border-radius: 0.375rem 0;
+	}
+
+	@media (max-width: 768px) {
+		.vue-horizontal-list .vhl-container {
+			margin-right: 0!important;
+			margin-left: 0!important;
+		}
 	}
 </style>
