@@ -3,13 +3,11 @@
 		<vue-horizontal-list :items="isLoading ? fakeItems : items" :options="options">
 			<template v-slot:default="{ item }">
 				<Skeleton :loading="isLoading" height="13em">
-					<div class="bg-white rounded-md shadow-md cursor-pointer transform transition-scale duration-200 hover:scale-105 ease-in-out">
-						<img class="rounded-t-md aspect" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
-						<div class="movie-title">
-							<p class="whitespace-no-wrap overflow-hidden px-1">
-								{{ item.title || item.name }}
-							</p>
-						</div>
+					<div class="item relative rounded-md shadow-md">
+						<img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
+						<p class="movie-title">
+							{{ item.title || item.name }}
+						</p>
 					</div>
 				</Skeleton>
 			</template>
@@ -45,6 +43,7 @@ export default {
 	},
 	computed: {
 		isLoading() {
+			console.log(this.items);
 			if (this.items.length === 0) {
 				return true;
 			} else {
@@ -56,14 +55,42 @@ export default {
 </script>
 
 <style>
-	.movie-title::before {
+	.item {
+		cursor: pointer;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.item::before {
 		content: '';
 		position: absolute;
-		z-index: 100;
-		height: 1.5em;
+		height: 100%;
 		width: 100%;
-		background: linear-gradient(90deg, transparent 50%, white);
-		border-radius: 0.375rem 0;
+		background: rgba(0,0,0,0.7);
+		opacity: 0;
+		box-shadow: inset 0 0 2em 1em rgba(0,0,0,0.7);
+		transition: opacity 0.5s;
+	}
+
+	.item:hover::before {
+		opacity: 1;
+	}
+
+	.movie-title {
+		text-align: center;
+		top: 50%;
+		transform: translateY(-50%);
+		position: absolute;
+		width: 100%;
+		color: white;
+		font-weight: bold;
+		opacity: 0;
+		transition: opacity 0.5s;
+		padding: 5px;
+	}
+
+	.item:hover .movie-title {
+		opacity: 1;
 	}
 
 	@media (max-width: 768px) {

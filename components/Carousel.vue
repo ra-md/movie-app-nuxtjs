@@ -82,15 +82,19 @@ export default {
     position: absolute;
     height: 100%;
     width: 100%;
-    transition: background-color 0.5s;
+    background-color: rgba(0,0,0,0.6);
+    box-shadow: inset 0 0 2em 1em rgba(0,0,0,0.7);
+    transition: opacity 0.5s;
+    opacity: 0;
   }
 
   .trending:hover .bg::before {
-    background-color: rgba(0,0,0,0.6);
+    opacity: 1;
   }
 
   .trending .title {
-    display: none;
+    opacity: 0;
+    transition: opacity 0.5s;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -100,7 +104,7 @@ export default {
   }
 
   .trending:hover .title {
-    display: inline-block;
+    opacity: 1;
   }
 
   @media (max-width: 768px) {
