@@ -20,6 +20,7 @@ module.exports = {
     'vue/html-indent': 'off',
     'indent': 'off',
     'space-before-function-paren': 'off',
-    'no-console': 'off'
+    'no-console': 'off',
+    'dot-notation': 'off'
   }
 }
