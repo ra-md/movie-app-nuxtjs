@@ -43,7 +43,6 @@ export default {
 	},
 	computed: {
 		isLoading() {
-			console.log(this.items);
 			if (this.items.length === 0) {
 				return true;
 			} else {
