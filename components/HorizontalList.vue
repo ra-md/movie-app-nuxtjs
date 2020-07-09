@@ -74,6 +74,7 @@ export default {
 
 	.item:hover::before {
 		opacity: 1;
+		backdrop-filter: blur(5px);
 	}
 
 	.movie-title {

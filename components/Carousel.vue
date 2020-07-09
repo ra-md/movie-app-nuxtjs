@@ -89,6 +89,7 @@ export default {
   }
 
   .trending:hover .bg::before {
+    backdrop-filter: blur(5px);
     opacity: 1;
   }
 
