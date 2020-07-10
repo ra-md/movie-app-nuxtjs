@@ -1,16 +1,22 @@
 <template>
 	<div>
-		<div :class="{'openOverlay': sidebar}" class="overlay" @click="toggleSidebar" />
+		<div
+			:class="{'openOverlay': sidebar}"
+			class="fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-50 hidden z-40"
+			@click="closeSidebar"
+		/>
 		<div :class="{'openSidebar': sidebar}" class="sidebar">
 			<ul>
 				<li
 					v-for="(list, index) in navList"
 					:key="index"
-					class="cursor-pointer text-left my-2"
-					:class="[{'bg-gray-200': $route.path === list.route}, list.style || 'px-12 font-normal']"
 					@click="closeSidebar"
 				>
-					<nuxt-link class="inline-block w-full py-2" :to="list.route">
+					<nuxt-link
+						class="links"
+						:to="list.route"
+						:class="[{'bg-gray-200': $route.path === list.route}, list.style || 'px-12 font-normal']"
+					>
 						{{ list.name }}
 					</nuxt-link>
 				</li>
@@ -20,9 +26,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
+	name: 'SideBar',
 	data() {
 		return {
 			sidebar: false,
@@ -42,14 +47,14 @@ export default {
 		};
 	},
 	mounted() {
-		axios.get('https://api.themoviedb.org/3/discover/movie?api_key=c73e688d3dc273ea17737c4fca5714b4&language=en-US&page=1&with_genres=28')
-		.then((res) => {
-			console.log(res);
-		});
+		// axios.get('https://api.themoviedb.org/3/discover/movie?api_key=c73e688d3dc273ea17737c4fca5714b4&language=en-US&page=1&with_genres=28')
+		// .then((res) => {
+		// 	console.log(res);
+		// });
 	},
 	methods: {
-		toggleSidebar() {
-			this.sidebar = !this.sidebar;
+		openSidebar() {
+			this.sidebar = true;
 		},
 		closeSidebar() {
 			this.sidebar = false;
@@ -79,29 +84,16 @@ export default {
 	}
 
 	.links {
-		@apply px-16 py-2 my-2;
-		text-align: left;
+		@apply rounded-md my-1 py-2;
+		display: inline-block;
+		width: 100%;
 		cursor: pointer;
-	}
-
-	li {
-		@apply rounded-md;
+		text-align: left;
 		transition: background-color 0.3s;
 	}
 
-	li:hover {
+	.links:hover {
 		@apply bg-gray-200;
-	}
-
-	.overlay {
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		background-color: rgba(0,0,0,0.5);
-		display: none;
-		z-index: 40;
 	}
 
 	@media (min-width: 768px) {
