@@ -25,10 +25,6 @@ export default {
 	components: {
 		SideBar
 	},
-	data() {
-		return {
-		};
-	},
 	methods: {
 		openSidebar() {
 			this.$refs.sidebar.openSidebar();
