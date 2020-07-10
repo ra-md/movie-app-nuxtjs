@@ -1,16 +1,17 @@
 <template>
   <div class="relative">
     <div class="carousel my-4">
-      <h1 v-if="trendings.length === 0">Loading...</h1>
-      <VueSlickCarousel v-else v-bind="settings">
+      <VueSlickCarousel v-bind="settings">
         <div v-for="trending in trendings" :key="trending.id">
           <div class="trending px-2">
-            <div class="bg">
-              <img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${trending.backdrop_path}`">
-            </div>
-            <h1 class="title">
-              {{ trending.title||trending.name }}
-            </h1>
+            <Skeleton :loading="data.length === 0" height="15em">
+              <div class="bg">
+                <img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${trending.backdrop_path}`">
+              </div>
+              <h1 class="title">
+                {{ trending.title||trending.name }}
+              </h1>
+            </Skeleton>
           </div>
         </div>
       </VueSlickCarousel>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import { Skeleton } from 'vue-loading-skeleton';
 import VueSlickCarousel from 'vue-slick-carousel';
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
@@ -27,11 +29,13 @@ import api from '~/api';
 export default {
   name: 'Carousel',
   components: {
+    Skeleton,
     VueSlickCarousel
   },
   data() {
     return {
-      trendings: [],
+      data: [],
+      fakeData: [{}, {}, {}],
       settings: {
         dots: true,
         centerMode: true,
@@ -52,12 +56,21 @@ export default {
       }
     };
   },
+  computed: {
+    trendings() {
+      if (this.data.length === 0) {
+        return [{}, {}, {}, {}, {}];
+      } else {
+        return this.data;
+      }
+    }
+  },
   mounted() {
     api.trending('all', 'week')
     .then((res) => {
       const data = res.data.results.splice(0, 5);
 
-      this.trendings = data;
+      this.data = data;
     });
   }
 };
