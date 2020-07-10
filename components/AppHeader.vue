@@ -31,7 +31,7 @@ export default {
 	},
 	methods: {
 		openSidebar() {
-			this.$refs.sidebar.toggleSidebar();
+			this.$refs.sidebar.openSidebar();
 		}
 	}
 };

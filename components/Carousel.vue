@@ -25,6 +25,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 import api from '~/api';
 
 export default {
+  name: 'Carousel',
   components: {
     VueSlickCarousel
   },
