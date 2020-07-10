@@ -7,7 +7,7 @@
 					v-for="(list, index) in navList"
 					:key="index"
 					class="cursor-pointer text-left my-2"
-					:class="[{'bg-gray-100': $route.path === list.route}, list.style || 'px-12 font-normal']"
+					:class="[{'bg-gray-200': $route.path === list.route}, list.style || 'px-12 font-normal']"
 					@click="closeSidebar"
 				>
 					<nuxt-link class="inline-block w-full py-2" :to="list.route">
@@ -90,7 +90,7 @@ export default {
 	}
 
 	li:hover {
-		background-color: #f7fafc;
+		@apply bg-gray-200;
 	}
 
 	.overlay {
