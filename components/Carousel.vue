@@ -77,7 +77,7 @@ export default {
 
 <style>
   .slick-prev:before, .slick-next:before {
-    color: black;
+    color: black!important;
   }
 
   .slick-slide div div {
