@@ -34,7 +34,7 @@ export default {
 			options: {
 				responsive: [
 					{ end: 576, size: 3 },
-					{ start: 576, end: 992, size: 5 },
+					{ start: 576, end: 1024, size: 5 },
 					{ size: 7 }
 				]
 			},
@@ -61,6 +61,7 @@ export default {
 	}
 
 	.item::before {
+		@apply rounded-md;
 		content: '';
 		position: absolute;
 		height: 100%;
@@ -97,6 +98,10 @@ export default {
 		.vue-horizontal-list .vhl-container {
 			margin-right: 0!important;
 			margin-left: 0!important;
+		}
+
+		.movie-title {
+			font-size: 12px;
 		}
 	}
 </style>

@@ -19,7 +19,7 @@ export default {
 
 <style>
 html {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   box-sizing: border-box;
@@ -31,20 +31,20 @@ body {
 }
 
 h1 {
-  @apply text-2xl;
+  @apply text-2xl font-semibold;
 }
 
 h2 {
-  @apply text-xl;
+  @apply text-xl font-semibold;
 }
 
 h3 {
-  @apply text-lg;
+  @apply text-lg font-semibold;
 }
 
 @media (min-width: 768px) {
   .padding-left {
-    padding-left: 12.5em;
+    padding-left: 11.5em;
   }
 }
 </style>
