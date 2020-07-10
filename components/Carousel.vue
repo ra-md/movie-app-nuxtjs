@@ -35,7 +35,6 @@ export default {
   data() {
     return {
       data: [],
-      fakeData: [{}, {}, {}],
       settings: {
         dots: true,
         centerMode: true,
