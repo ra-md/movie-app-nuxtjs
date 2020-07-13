@@ -34,8 +34,8 @@ export default {
 			tv: []
 		};
 	},
-	mounted() {
-		api.movies.popular(1)
+	created() {
+		api.movie.popular(1)
 		.then((res) => {
 			this.movies = res.data.results;
 		});

@@ -5,9 +5,10 @@ const API_KEY = 'c73e688d3dc273ea17737c4fca5714b4';
 
 const axiosInstance = axios.create({ baseURL: API_URL });
 
-function params(page = 1) {
+function params(page = 1, option = {}) {
 	return {
 		params: {
+			...option,
 			api_key: API_KEY,
 			page,
 			language: 'en-US'
@@ -15,12 +16,15 @@ function params(page = 1) {
 	};
 }
 
-const movies = {
-	popular: (page) => {
+const movie = {
+	popular(page) {
 		return axiosInstance.get('movie/popular', params(page));
 	},
-	trending: () => {
+	trending() {
 		return 'trending movie';
+	},
+	details(id) {
+		return axiosInstance.get(`movie/${id}`, params());
 	}
 };
 
@@ -34,4 +38,4 @@ function trending(mediaType, time) {
 	return axiosInstance.get(`trending/${mediaType}/${time}`, params());
 }
 
-export default { movies, tv, trending };
+export default { movie, tv, trending };

@@ -49,7 +49,8 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/fontawesome'
   ],
   /*
   ** Nuxt.js modules
@@ -72,6 +73,11 @@ export default {
   build: {
     extend(config) {
       config.resolve.alias['vue'] = 'vue/dist/vue.common'
+    }
+  },
+  fontawesome: {
+    icons: {
+      solid: ['faStar', 'faFilm', 'faHourglass'],
     }
   }
 }

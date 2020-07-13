@@ -64,7 +64,7 @@ export default {
       }
     }
   },
-  mounted() {
+  created() {
     api.trending('all', 'week')
     .then((res) => {
       const data = res.data.results.splice(0, 5);

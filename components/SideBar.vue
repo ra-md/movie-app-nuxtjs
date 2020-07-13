@@ -38,7 +38,7 @@ export default {
 				{ name: 'Trending', route: '/movies/trending' },
 				{ name: 'Popular', route: '/movies/popular' },
 				{ name: 'Upcoming', route: '/movies/upcoming' },
-				{ name: 'TV Series', route: '/movies/tv-series', style: 'px-8 font-medium' },
+				{ name: 'TV Series', route: '/tv-series', style: 'px-8 font-medium' },
 				{ name: 'Top Rated', route: '/tv-series/top-rated' },
 				{ name: 'Trending', route: '/tv-series/trending' },
 				{ name: 'Popular', route: '/tv-series/popular' },
