@@ -25,6 +25,15 @@ const movie = {
 	},
 	details(id) {
 		return axiosInstance.get(`movie/${id}`, params());
+	},
+	credits(id) {
+		return axiosInstance.get(`movie/${id}/credits`, params());
+	},
+	trailer(id) {
+		return axiosInstance.get(`movie/${id}/videos`, params());
+	},
+	similar(id) {
+		return axiosInstance.get(`/movie/${id}/similar`, params());
 	}
 };
 
