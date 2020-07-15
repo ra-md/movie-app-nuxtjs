@@ -9,7 +9,7 @@
 					<img class="h-full rounded-md" :src="`https://image.tmdb.org/t/p/w500/${detail.poster_path}`">
 				</div>
 				<div class="bg-white w-3/5 shadow-md p-4 rounded-md">
-					<iframe v-if="trailer !== undefined" class="rounded-md h-3/5 w-full mb-4 shadow-md" :src="`https://www.youtube.com/embed/${trailer.key}`" />
+					<iframe v-if="trailer" class="rounded-md h-3/5 w-full mb-4 shadow-md" :src="`https://www.youtube.com/embed/${trailer.key}`" />
 					<div class="mb-1">
 						<h1>
 							{{ detail.title || detail.name }} ({{ year }})
@@ -55,9 +55,9 @@
 						</div>
 					</template>
 				</vue-horizontal-list>
-				<h1>Similar Movies</h1>
-				<HorizontalList :items="similar" />
 			</client-only>
+			<h1>Similar Movies</h1>
+			<HorizontalList :items="similar" />
 		</div>
 	</div>
 </template>
@@ -111,6 +111,7 @@ export default {
 				const firstAirDate = this.detail.first_air_date.split('-')[0];
 				const lastAirDate = this.detail.last_air_date.split('-')[0];
 				const status = this.detail.status;
+
 				return `${firstAirDate}-${status === 'Ended' ? lastAirDate : ''}`;
 			} else {
 				const year = this.detail.release_date.split('-')[0];
