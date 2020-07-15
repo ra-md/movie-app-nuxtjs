@@ -3,7 +3,7 @@
 		<vue-horizontal-list :items="isLoading ? fakeItems : items" :options="options">
 			<template v-slot:default="{ item }">
 				<Skeleton :loading="isLoading" height="13em">
-					<nuxt-link :to="`/movies/${slug(item.title||item.name, item.id)}`">
+					<nuxt-link :to="`/${item.title ? 'movies':'tv-series'}/${slug(item.title||item.name, item.id)}`">
 						<div class="item relative rounded-md shadow-md">
 							<img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
 							<p class="movie-title">
@@ -48,6 +48,7 @@ export default {
 			if (this.items.length === 0) {
 				return true;
 			} else {
+				console.log(this.items);
 				return false;
 			}
 		}
