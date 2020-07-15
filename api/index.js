@@ -40,6 +40,21 @@ const movie = {
 const tv = {
 	popular: (page) => {
 		return axiosInstance.get('tv/popular', params(page));
+	},
+	trending() {
+		return 'trending movie';
+	},
+	details(id) {
+		return axiosInstance.get(`tv/${id}`, params());
+	},
+	credits(id) {
+		return axiosInstance.get(`tv/${id}/credits`, params());
+	},
+	trailer(id) {
+		return axiosInstance.get(`tv/${id}/videos`, params());
+	},
+	similar(id) {
+		return axiosInstance.get(`/tv/${id}/similar`, params());
 	}
 };
 
