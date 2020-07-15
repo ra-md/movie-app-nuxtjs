@@ -1,22 +1,24 @@
 <template>
-  <div class="relative">
-    <div class="carousel my-4">
-      <VueSlickCarousel v-bind="settings">
-        <div v-for="trending in trendings" :key="trending.id">
-          <div class="trending px-2">
-            <Skeleton :loading="data.length === 0" height="15em">
-              <div class="bg">
-                <img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${trending.backdrop_path}`">
-              </div>
-              <h1 class="title">
-                {{ trending.title||trending.name }}
-              </h1>
-            </Skeleton>
+  <client-only>
+    <div class="relative">
+      <div class="carousel my-4">
+        <VueSlickCarousel v-bind="settings">
+          <div v-for="trending in trendings" :key="trending.id">
+            <div class="trending px-2">
+              <Skeleton :loading="data.length === 0" height="15em">
+                <div class="bg">
+                  <img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${trending.backdrop_path}`">
+                </div>
+                <h1 class="title">
+                  {{ trending.title||trending.name }}
+                </h1>
+              </Skeleton>
+            </div>
           </div>
-        </div>
-      </VueSlickCarousel>
+        </VueSlickCarousel>
+      </div>
     </div>
-  </div>
+  </client-only>
 </template>
 
 <script>
@@ -36,6 +38,7 @@ export default {
     return {
       data: [],
       settings: {
+        arrows: true,
         dots: true,
         centerMode: true,
         infinite: true,
@@ -47,7 +50,6 @@ export default {
           {
             breakpoint: 768,
             settings: {
-              arrows: false,
               slidesToShow: 1
             }
           }
