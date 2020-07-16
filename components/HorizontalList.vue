@@ -48,7 +48,6 @@ export default {
 			if (this.items.length === 0) {
 				return true;
 			} else {
-				console.log(this.items);
 				return false;
 			}
 		}
@@ -107,11 +106,6 @@ export default {
 	}
 
 	@media (max-width: 768px) {
-		.vue-horizontal-list .vhl-container {
-			margin-right: 0!important;
-			margin-left: 0!important;
-		}
-
 		.movie-title {
 			font-size: 12px;
 		}

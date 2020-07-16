@@ -9,6 +9,9 @@ module.exports = {
     extend: {
       height: {
         '3/5': '60%'
+      },
+      inset: {
+        '1/2': '50%'
       }
     }
   },

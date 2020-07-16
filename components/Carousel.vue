@@ -1,6 +1,6 @@
 <template>
   <client-only>
-    <div class="relative">
+    <div class="relative pt-4 md:pt-0">
       <div class="carousel my-4">
         <VueSlickCarousel v-bind="settings">
           <div v-for="trending in trendings" :key="trending.id">
@@ -38,7 +38,6 @@ export default {
     return {
       data: [],
       settings: {
-        arrows: true,
         dots: true,
         centerMode: true,
         infinite: true,
@@ -50,6 +49,7 @@ export default {
           {
             breakpoint: 768,
             settings: {
+              arrows: false,
               slidesToShow: 1
             }
           }

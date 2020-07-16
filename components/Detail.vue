@@ -1,48 +1,62 @@
 <template>
 	<div>
 		<div v-if="!detail.id">
-			<h1>Loading...</h1>
+			<Loading />
 		</div>
-		<div v-else class="">
-			<div class="max-h-screen py-4 flex">
-				<div class="w-2/5">
-					<img class="h-full rounded-md" :src="`https://image.tmdb.org/t/p/w500/${detail.poster_path}`">
+		<div v-else>
+			<div class="lg:py-2 mb-4 flex flex-col lg:flex-row">
+				<div class="lg:w-2/5 lg:ml-8 lg:order-last">
+					<div class="relative overlay">
+						<img class="w-full lg:hidden" :src="`https://image.tmdb.org/t/p/w500/${detail.backdrop_path}`">
+						<img
+							class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 h-40 lg:rounded-md lg:h-auto lg:static lg:translate-x-0 lg:translate-y-0"
+							:src="`https://image.tmdb.org/t/p/w500/${detail.poster_path}`"
+						>
+					</div>
 				</div>
-				<div class="bg-white w-3/5 shadow-md p-4 rounded-md">
-					<iframe v-if="trailer" class="rounded-md h-3/5 w-full mb-4 shadow-md" :src="`https://www.youtube.com/embed/${trailer.key}`" />
-					<div class="mb-1">
-						<h1>
-							{{ detail.title || detail.name }} ({{ year }})
-						</h1>
+				<div class="bg-white shadow-md p-4 flex flex-col lg:w-3/5 lg:rounded-md lg:order-first">
+					<div class="lg:my-0 lg:order-last">
+						<div class="mb-1">
+							<h1>
+								{{ detail.title || detail.name }} ({{ year }})
+							</h1>
+						</div>
+						<div class="mb-1">
+							<font-awesome-icon icon="film" />
+							<span v-for="(genre, index) in detail.genres" :key="genre.id" class="pr-2 text-lg">
+								{{ genre.name }}{{ index !== detail.genres.length - 1 ? ',' : '' }}
+							</span>
+						</div>
+						<div class="mb-1">
+							<font-awesome-icon icon="hourglass" />
+							<span class="ml-1 text-lg">
+								{{ type === 'tv-series' ? detail.episode_run_time[0] : detail.runtime }} minutes
+							</span>
+						</div>
+						<div class="mb-1">
+							<font-awesome-icon class="text-yellow-400" icon="star" />
+							<span class="text-lg">{{ detail.vote_average }}<span class="font-thin">/10</span></span>
+						</div>
+						<div class="overflow-auto lg:h-24 lg:shadow-inner">
+							<p class="p-2">
+								{{ detail.overview }}
+							</p>
+						</div>
 					</div>
-					<div class="mb-1">
-						<font-awesome-icon icon="film" />
-						<span v-for="(genre, index) in detail.genres" :key="genre.id" class="pr-2 text-lg">
-							{{ genre.name }}{{ index !== detail.genres.length - 1 ? ',' : '' }}
-						</span>
-					</div>
-					<div class="mb-1">
-						<font-awesome-icon icon="hourglass" />
-						<span class="ml-1 text-lg">
-							{{ type === 'tv-series' ? detail.episode_run_time[0] : detail.runtime }} minutes
-						</span>
-					</div>
-					<div class="mb-1">
-						<font-awesome-icon class="text-yellow-400" icon="star" />
-						<span class="text-lg">{{ detail.vote_average }}<span class="font-thin">/10</span></span>
-					</div>
-					<div class="h-20 shadow-inner overflow-auto">
-						<p class="p-2">
-							{{ detail.overview }}
-						</p>
-					</div>
+					<iframe
+						v-if="trailer"
+						class="w-full mb-4 shadow-md h-48 md:h-64 lg:order-first lg:rounded-md lg:h-3/5"
+						:src="`https://www.youtube.com/embed/${trailer.key}`"
+					/>
 				</div>
 			</div>
 			<client-only v-if="credits.length !== 0">
-				<h1>Cast</h1>
-				<vue-horizontal-list :items="filteredCast" :options="options">
+				<h1 class="px-2">
+					Cast
+				</h1>
+				<vue-horizontal-list class="mb-4" :items="credits" :options="options">
 					<template v-slot:default="{ item }">
-						<div class="rounded-md bg-white shadow-md overflow-hidden">
+						<div class="rounded-md h-full bg-white shadow-md overflow-hidden">
 							<img class="rounded-t-md" :src="`https://image.tmdb.org/t/p/w500/${item.profile_path}`">
 							<div class="item relative px-2 whitespace-no-wrap">
 								<p class="font-medium">
@@ -56,7 +70,9 @@
 					</template>
 				</vue-horizontal-list>
 			</client-only>
-			<h1>Similar Movies</h1>
+			<h1 class="px-2">
+				Similar Movies
+			</h1>
 			<HorizontalList :items="similar" />
 		</div>
 	</div>
@@ -64,11 +80,13 @@
 
 <script>
 import HorizontalList from '~/components/HorizontalList';
+import Loading from '~/components/Loading';
 
 export default {
 	name: 'Detail',
 	components: {
-		HorizontalList
+		HorizontalList,
+		Loading
 	},
 	props: {
 		type: {
@@ -98,7 +116,7 @@ export default {
 		return {
 			options: {
 				responsive: [
-					{ end: 576, size: 3 },
+					{ end: 576, size: 2 },
 					{ start: 576, end: 1024, size: 5 },
 					{ size: 7 }
 				]
@@ -117,24 +135,34 @@ export default {
 				const year = this.detail.release_date.split('-')[0];
 				return year;
 			}
-		},
-		filteredCast() {
-			return this.credits.filter((cast) => {
-				return cast.profile_path !== null;
-			});
 		}
 	}
 };
 </script>
 
 <style scoped>
+	.overlay::before {
+		opacity: 0.7;
+		background-color: black;
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+	}
+
 	.item::before {
 		content: '';
 		position: absolute;
 		top: 0;
-		left: 0;
+		right: 0;
 		height: 100%;
-		width: 100%;
-		background: linear-gradient(90deg, transparent 70%, white);
+		width: 10%;
+		background: linear-gradient(90deg, transparent, white);
+	}
+
+	@media (min-width: 1024px) {
+		.overlay::before {
+			display: none;
+		}
 	}
 </style>

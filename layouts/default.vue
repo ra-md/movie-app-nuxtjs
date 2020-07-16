@@ -1,7 +1,7 @@
 <template>
   <div>
     <AppHeader />
-    <div class="padding-left mt-16 md:mt-0 container mx-auto">
+    <div class="padding-left mt-12 md:mt-0 container mx-auto">
       <Nuxt />
     </div>
   </div>
@@ -45,6 +45,13 @@ h3 {
 @media (min-width: 768px) {
   .padding-left {
     padding-left: 11.5em;
+  }
+}
+
+@media (max-width: 768px) {
+  .vue-horizontal-list .vhl-container {
+    margin-right: 0!important;
+    margin-left: 0!important;
   }
 }
 </style>
