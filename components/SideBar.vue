@@ -1,11 +1,7 @@
 <template>
 	<div>
-		<div
-			:class="{'openOverlay': sidebar}"
-			class="fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-50 hidden z-40"
-			@click="closeSidebar"
-		/>
 		<div :class="{'openSidebar': sidebar}" class="sidebar">
+			<SearchBar class="my-3 hidden md:block" />
 			<ul>
 				<li
 					v-for="(list, index) in navList"
@@ -15,19 +11,29 @@
 					<nuxt-link
 						class="links"
 						:to="list.route"
-						:class="[{'bg-gray-200': $route.path === list.route}, list.style || 'px-12 font-normal']"
+						:class="[{'bg-gray-200': $route.path === list.route}, list.style || 'px-16 font-normal']"
 					>
 						{{ list.name }}
 					</nuxt-link>
 				</li>
 			</ul>
 		</div>
+		<div
+			:class="{'openOverlay': sidebar}"
+			class="fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-50 hidden z-40"
+			@click="closeSidebar"
+		/>
 	</div>
 </template>
 
 <script>
+import SearchBar from './SearchBar';
+
 export default {
 	name: 'SideBar',
+	components: {
+		SearchBar
+	},
 	data() {
 		return {
 			sidebar: false,
@@ -45,12 +51,6 @@ export default {
 				{ name: 'Upcoming', route: '/tv-series/upcoming' }
 			]
 		};
-	},
-	mounted() {
-		// axios.get('https://api.themoviedb.org/3/discover/movie?api_key=c73e688d3dc273ea17737c4fca5714b4&language=en-US&page=1&with_genres=28')
-		// .then((res) => {
-		// 	console.log(res);
-		// });
 	},
 	methods: {
 		openSidebar() {

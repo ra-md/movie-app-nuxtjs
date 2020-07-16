@@ -77,7 +77,7 @@ export default {
   },
   fontawesome: {
     icons: {
-      solid: ['faStar', 'faFilm', 'faHourglass', 'faCircleNotch']
+      solid: ['faStar', 'faFilm', 'faHourglass', 'faCircleNotch', 'faSearch', 'faTimes', 'faBars']
     }
   }
 }
