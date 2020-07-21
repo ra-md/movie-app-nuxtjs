@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="flex h-full w-full bg-white relative z-30 shadow-md md:shadow-none md:pt-4 md:h-10">
-			<button class="md:hidden px-3" @click="closeSideBar">
+			<button class="md:hidden px-3" @click="closeSearchBar">
 				<font-awesome-icon class="text-md" icon="times" />
 			</button>
 			<input
@@ -90,12 +90,12 @@ export default {
 		deleteSearchValue() {
 			this.searchValue = '';
 		},
-		closeSideBar() {
+		closeSearchBar() {
 			this.$emit('close-search-bar');
 		},
 		seeMore() {
 			this.$router.push({ path: '/search', query: { q: this.searchValue } });
-			this.closeSideBar();
+			this.closeSearchBar();
 			this.deleteSearchValue();
 		}
 	}
