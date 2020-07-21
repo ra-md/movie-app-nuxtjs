@@ -3,7 +3,7 @@
 		<vue-horizontal-list :items="isLoading ? fakeItems : items" :options="options">
 			<template v-slot:default="{ item }">
 				<Skeleton :loading="isLoading" height="13em">
-					<nuxt-link :to="`/${item.title ? 'movies':'tv-series'}/${slug(item.title||item.name, item.id)}`">
+					<nuxt-link :to="`/${item.title ? 'movies':'tv-series'}/${slug(item)}`">
 						<div class="item relative rounded-md shadow-md">
 							<img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
 							<p class="movie-title">
@@ -19,6 +19,7 @@
 
 <script>
 import { Skeleton } from 'vue-loading-skeleton';
+import convertToSlug from '~/utils/convertToSlug';
 
 export default {
 	name: 'HorizontalList',
@@ -53,11 +54,10 @@ export default {
 		}
 	},
 	methods: {
-		slug(title, id) {
-			if (title) {
-				const onlyNumberAndString = title.match(/[^:]/g).join('');
-				const slug = onlyNumberAndString.replace(/\s/g, '-');
-				return `${slug.toLowerCase()}-${id}`;
+		slug(item) {
+			if (item.id) {
+				const slug = convertToSlug(item.title || item.name, item.id);
+				return slug;
 			}
 		}
 	}

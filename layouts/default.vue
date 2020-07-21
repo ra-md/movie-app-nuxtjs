@@ -42,6 +42,10 @@ h3 {
   @apply text-lg font-semibold;
 }
 
+.btn {
+  @apply font-bold py-2 px-4 rounded;
+}
+
 @media (max-width: 768px) {
   .vue-horizontal-list .vhl-container {
     margin-right: 0!important;

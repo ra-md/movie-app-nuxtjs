@@ -7,6 +7,9 @@
 module.exports = {
   theme: {
     extend: {
+      maxHeight: {
+        '64': '16rem'
+      },
       height: {
         '3/5': '60%'
       },
@@ -15,7 +18,9 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    padding: ['first', 'responsive']
+  },
   plugins: [],
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css

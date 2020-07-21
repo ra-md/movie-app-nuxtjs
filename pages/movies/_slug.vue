@@ -1,9 +1,9 @@
 <template>
 	<div>
 		<Detail
-			type="movie"
+			type="Movie"
 			:detail="movie"
-			:credits="credits"
+			:cast="cast"
 			:trailer="trailer"
 			:similar="similarMovies"
 		/>
@@ -22,7 +22,7 @@ export default {
 	data() {
 		return {
 			movie: {},
-			credits: [],
+			cast: [],
 			trailer: {},
 			similarMovies: []
 		};
@@ -38,7 +38,7 @@ export default {
 
 		api.movie.credits(movieId)
 		.then((res) => {
-			this.credits = res.data.cast;
+			this.cast = res.data.cast;
 		});
 
 		api.movie.trailer(movieId)

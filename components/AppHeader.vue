@@ -6,7 +6,7 @@
 					<font-awesome-icon class="text-md" icon="bars" />
 				</button>
 				<nuxt-link to="/">
-					<h1 class="font-bold">
+					<h1 :class="{'text-left': $route.path === '/search'}" class="font-bold">
 						Movie App
 					</h1>
 				</nuxt-link>
@@ -14,14 +14,12 @@
 					<font-awesome-icon class="text-md" icon="search" />
 				</button>
 			</div>
-			<transition name="transition">
-				<SearchBar
-					v-if="search"
-					class="absolute left-0 top-0"
-					@close-search-bar="toggleSearchBar"
-					@click="toggleSearchBar"
-				/>
-			</transition>
+			<Search
+				v-if="searchBar"
+				class="absolute left-0 top-0 h-full w-full"
+				@close-search-bar="toggleSearchBar"
+				@click="toggleSearchBar"
+			/>
 		</header>
 		<SideBar ref="sidebar" />
 	</div>
@@ -29,17 +27,17 @@
 
 <script>
 import SideBar from './SideBar';
-import SearchBar from './SearchBar';
+import Search from './Search';
 
 export default {
 	name: 'AppHeader',
 	components: {
 		SideBar,
-		SearchBar
+		Search
 	},
 	data() {
 		return {
-			search: false
+			searchBar: false
 		};
 	},
 	methods: {
@@ -47,17 +45,8 @@ export default {
 			this.$refs.sidebar.openSidebar();
 		},
 		toggleSearchBar() {
-			this.search = !this.search;
+			this.searchBar = !this.searchBar;
 		}
 	}
 };
 </script>
-
-<style>
-.transition-enter-active, .transition-leave-active {
-  transition: transform .3s;
-}
-.transition-enter, .transition-leave-to {
-	transform: translateY(-3em);
-}
-</style>

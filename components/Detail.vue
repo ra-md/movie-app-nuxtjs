@@ -23,14 +23,15 @@
 						</div>
 						<div class="mb-1">
 							<font-awesome-icon icon="film" />
-							<span v-for="(genre, index) in detail.genres" :key="genre.id" class="pr-2 text-lg">
-								{{ genre.name }}{{ index !== detail.genres.length - 1 ? ',' : '' }}
+							<span v-for="genre in detail.genres" :key="genre.id" class="pr-2 text-lg">
+								{{ genre.name }},
 							</span>
+							<span class="text-lg">{{ type }}.</span>
 						</div>
 						<div class="mb-1">
 							<font-awesome-icon icon="hourglass" />
 							<span class="ml-1 text-lg">
-								{{ type === 'tv-series' ? detail.episode_run_time[0] : detail.runtime }} minutes
+								{{ type === 'TV' ? detail.episode_run_time[0] : detail.runtime }} minutes
 							</span>
 						</div>
 						<div class="mb-1">
@@ -50,11 +51,11 @@
 					/>
 				</div>
 			</div>
-			<client-only v-if="credits.length !== 0">
+			<client-only v-if="cast.length !== 0">
 				<h1 class="px-2">
 					Cast
 				</h1>
-				<vue-horizontal-list class="mb-4" :items="credits" :options="options">
+				<vue-horizontal-list class="mb-4" :items="cast" :options="options">
 					<template v-slot:default="{ item }">
 						<div class="rounded-md h-full bg-white shadow-md overflow-hidden">
 							<img class="rounded-t-md" :src="`https://image.tmdb.org/t/p/w500/${item.profile_path}`">
@@ -97,7 +98,7 @@ export default {
 			type: Object,
 			required: true
 		},
-		credits: {
+		cast: {
 			type: Array,
 			required: true
 		},
@@ -125,7 +126,7 @@ export default {
 	},
 	computed: {
 		year() {
-			if (this.type === 'tv-series') {
+			if (this.type === 'TV') {
 				const firstAirDate = this.detail.first_air_date.split('-')[0];
 				const lastAirDate = this.detail.last_air_date.split('-')[0];
 				const status = this.detail.status;

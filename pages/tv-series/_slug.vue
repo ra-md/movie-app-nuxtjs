@@ -1,9 +1,9 @@
 <template>
 	<div>
 		<Detail
-			type="tv-series"
+			type="TV"
 			:detail="tvSeries"
-			:credits="credits"
+			:cast="credits"
 			:trailer="trailer"
 			:similar="similarSeries"
 		/>
