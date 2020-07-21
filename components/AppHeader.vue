@@ -10,15 +10,14 @@
 						Movie App
 					</h1>
 				</nuxt-link>
-				<button @click="toggleSearchBar">
+				<button @click="openSearchBar">
 					<font-awesome-icon class="text-md" icon="search" />
 				</button>
 			</div>
 			<Search
 				v-if="searchBar"
 				class="absolute left-0 top-0 h-full w-full"
-				@close-search-bar="toggleSearchBar"
-				@click="toggleSearchBar"
+				@close-search-bar="closeSearchBar"
 			/>
 		</header>
 		<SideBar ref="sidebar" />
@@ -44,8 +43,13 @@ export default {
 		openSidebar() {
 			this.$refs.sidebar.openSidebar();
 		},
-		toggleSearchBar() {
-			this.searchBar = !this.searchBar;
+		openSearchBar() {
+			this.searchBar = true;
+			document.body.style.overflow = 'hidden';
+		},
+		closeSearchBar() {
+			this.searchBar = false;
+			document.body.style.overflow = 'auto';
 		}
 	}
 };
