@@ -34,8 +34,8 @@
 							</nuxt-link>
 						</div>
 						<div class="m-2">
-							<button class="w-full btn bg-blue-500 text-white hover:bg-blue-400" @click="seeMore">
-								See more
+							<button class="w-full btn bg-blue-500 text-white hover:bg-blue-400 focus:shadow-outline" @click="seeMore">
+								More Results.
 							</button>
 						</div>
 					</div>
@@ -74,7 +74,7 @@ export default {
 		}, 2000, true),
 		async search() {
 			if (this.searchValue.length !== 0) {
-				const { data } = await api.search(this.searchValue);
+				const { data } = await api.search(1, this.searchValue);
 				this.results = data.results;
 				this.loading = false;
 			} else {
