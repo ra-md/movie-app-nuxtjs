@@ -1,23 +1,17 @@
 <template>
 	<div>
-		<div v-if="loading">
-			<Loading />
-		</div>
-		<div v-else>
-			<SearchList :items="results" />
-		</div>
+		<Loading v-if="loading" />
+		<SearchList v-else :items="results" />
 	</div>
 </template>
 
 <script>
-import api from '~/api';
 import Loading from '~/components/Loading';
-import SearchList from '~/components/SearchList';
+import api from '~/api';
 
 export default {
 	components: {
-		Loading,
-		SearchList
+		Loading
 	},
 	data() {
 		return {
@@ -25,18 +19,21 @@ export default {
 			loading: true
 		};
 	},
-	created() {
-		this.fetchSearch();
+	watch: {
+		$route() {
+			this.fetchSearch();
+			this.loading = true;
+		}
 	},
-	updated() {
+	created() {
 		this.fetchSearch();
 	},
 	methods: {
 		fetchSearch() {
-			api.search(this.$route.query.q)
+			api.search(1, this.$route.query.q)
 			.then((response) => {
-				this.results = response.data.results;
 				this.loading = false;
+				this.results = response.data.results;
 			});
 		}
 	}
