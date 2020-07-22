@@ -10,7 +10,7 @@
 				type="input"
 				placeholder="Search..."
 			>
-			<button class="px-3 hover:text-blue-500 md:absolute md:h-full md:right-0">
+			<button class="px-3 hover:text-blue-500 md:absolute md:h-full md:right-0" @click="seeMore">
 				<font-awesome-icon class="text-md" icon="search" />
 			</button>
 		</div>
