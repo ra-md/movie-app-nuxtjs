@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div :class="{'openSidebar': sidebar}" class="sidebar">
-			<Search class="hidden mb-6 md:block" />
+			<SearchBar class="hidden mb-6 md:block" />
 			<ul>
 				<li
 					v-for="(list, index) in navList"
@@ -27,12 +27,12 @@
 </template>
 
 <script>
-import Search from './Search';
+import SearchBar from './SearchBar';
 
 export default {
 	name: 'SideBar',
 	components: {
-		Search
+		SearchBar
 	},
 	data() {
 		return {

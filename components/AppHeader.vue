@@ -14,8 +14,8 @@
 					<font-awesome-icon class="text-md" icon="search" />
 				</button>
 			</div>
-			<Search
-				v-if="searchBar"
+			<SearchBar
+				v-if="search"
 				class="absolute left-0 top-0 h-full w-full"
 				@close-search-bar="closeSearchBar"
 			/>
@@ -26,17 +26,17 @@
 
 <script>
 import SideBar from './SideBar';
-import Search from './Search';
+import SearchBar from './SearchBar';
 
 export default {
 	name: 'AppHeader',
 	components: {
 		SideBar,
-		Search
+		SearchBar
 	},
 	data() {
 		return {
-			searchBar: false
+			search: false
 		};
 	},
 	methods: {
@@ -44,11 +44,11 @@ export default {
 			this.$refs.sidebar.openSidebar();
 		},
 		openSearchBar() {
-			this.searchBar = true;
+			this.search = true;
 			document.body.style.overflow = 'hidden';
 		},
 		closeSearchBar() {
-			this.searchBar = false;
+			this.search = false;
 			document.body.style.overflow = 'auto';
 		}
 	}
