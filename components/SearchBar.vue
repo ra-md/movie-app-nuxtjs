@@ -6,7 +6,7 @@
 			</button>
 			<input
 				v-model="searchValue"
-				class="border-gray-200 w-full outline-none md:pl-2 md:pr-8 md:border-2 md:rounded-md md:absolute md:h-full"
+				class="border-gray-200 w-full outline-none focus:shadow-outline md:pl-2 md:pr-8 md:border-2 md:rounded-md md:absolute md:h-full"
 				type="input"
 				placeholder="Search..."
 			>
