@@ -62,8 +62,8 @@ function trending(mediaType, time) {
 	return axiosInstance.get(`trending/${mediaType}/${time}`, params());
 }
 
-function search(query) {
-	return axiosInstance.get('search/movie', params(1, { query }));
+function search(page, query) {
+	return axiosInstance.get('search/movie', params(page, { query }));
 }
 
 export default { movie, tv, trending, search };
