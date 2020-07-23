@@ -1,11 +1,11 @@
 <template>
 	<div>
-		<div class="flex h-full w-full bg-white relative z-30 shadow-md md:shadow-none md:pt-4 md:h-10">
+		<div class="flex text-black h-full w-full bg-white relative z-30 shadow-md md:shadow-none md:pt-4 md:h-10">
 			<button class="md:hidden px-3" @click="closeSearchBar">
 				<font-awesome-icon class="text-md" icon="times" />
 			</button>
 			<input
-				class="border-gray-200 w-full outline-none focus:border-primary md:pl-2 md:pr-8 md:border-2 md:rounded-md md:absolute md:h-full"
+				class="border-gray-200 w-full outline-none md:pl-2 md:pr-8 md:border-2 md:rounded-md md:absolute md:h-full"
 				type="input"
 				placeholder="Search..."
 				:value="searchValue"
