@@ -6,11 +6,11 @@
 			</button>
 			<input
 				v-model="searchValue"
-				class="border-gray-200 w-full outline-none focus:shadow-outline md:pl-2 md:pr-8 md:border-2 md:rounded-md md:absolute md:h-full"
+				class="border-gray-200 w-full outline-none focus:border-primary md:pl-2 md:pr-8 md:border-2 md:rounded-md md:absolute md:h-full"
 				type="input"
 				placeholder="Search..."
 			>
-			<button class="px-3 hover:text-blue-500 md:absolute md:h-full md:right-0" @click="seeMore">
+			<button class="px-3 hover:text-primary md:absolute md:h-full md:right-0" @click="seeMore">
 				<font-awesome-icon class="text-md" icon="search" />
 			</button>
 		</div>

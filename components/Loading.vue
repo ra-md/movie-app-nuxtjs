@@ -6,7 +6,7 @@
 
 <style>
 	.loading {
-		@apply text-blue-500;
+		@apply text-primary;
 		animation: loading-keyframes 0.9s linear infinite;
 	}
 

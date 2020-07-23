@@ -84,24 +84,23 @@ export default {
 }
 
 .page-link {
-	@apply rounded-md font-medium;
+	@apply rounded-md font-medium text-primary;
   position: relative;
   display: block;
   padding: .5rem .75rem;
-  margin-right: 0.2rem;
+  margin-right: .2rem;
   line-height: 1.25;
-  color: #007bff;
 }
 
 .page-link:hover {
+	@apply bg-primary;
   color: #fff;
-  background-color: #007bff;
 }
 
 .page-item.active .page-link {
+	@apply bg-primary;
   z-index: 3;
   color: #fff;
-  background-color: #007bff;
 }
 
 .page-item.disabled .page-link {

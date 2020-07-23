@@ -15,6 +15,9 @@ module.exports = {
       },
       inset: {
         '1/2': '50%'
+      },
+      colors: {
+        'primary': '#007bff'
       }
     }
   },

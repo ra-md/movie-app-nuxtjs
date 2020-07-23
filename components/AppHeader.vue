@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<header class="md:hidden shadow-md bg-blue-400 fixed top-0 left-0 right-0 py-2 px-3 z-30">
+		<header class="md:hidden shadow-md bg-primary fixed top-0 left-0 right-0 py-2 px-3 z-30">
 			<div class="container mx-auto flex justify-between">
 				<button @click="openSidebar">
 					<font-awesome-icon class="text-md" icon="bars" />
