@@ -36,9 +36,13 @@ export default {
 		};
 	},
 	watch: {
-		$route() {
+		$route(newRouter, oldRouter) {
+			if (newRouter.query.q !== oldRouter.query.q) {
+				this.currentPage = 1;
+			}
 			this.fetchSearch();
 			this.loading = true;
+			window.scrollTo(0, 0);
 		},
 		currentPage() {
 			this.$router.push({
