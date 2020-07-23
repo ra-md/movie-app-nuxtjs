@@ -5,10 +5,11 @@
 				<font-awesome-icon class="text-md" icon="times" />
 			</button>
 			<input
-				v-model="searchValue"
 				class="border-gray-200 w-full outline-none focus:border-primary md:pl-2 md:pr-8 md:border-2 md:rounded-md md:absolute md:h-full"
 				type="input"
 				placeholder="Search..."
+				:value="searchValue"
+				@input="e => searchValue = e.target.value"
 			>
 			<button class="px-3 hover:text-primary md:absolute md:h-full md:right-0" @click="seeMore">
 				<font-awesome-icon class="text-md" icon="search" />
