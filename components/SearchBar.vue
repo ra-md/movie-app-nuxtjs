@@ -35,8 +35,8 @@
 							</nuxt-link>
 						</div>
 						<div class="m-2">
-							<button class="w-full btn bg-blue-500 text-white hover:bg-blue-400 focus:shadow-outline" @click="seeMore">
-								More Results.
+							<button class="w-full btn bg-primary text-white hover:shadow-outline" @click="seeMore">
+								More Results
 							</button>
 						</div>
 					</div>
