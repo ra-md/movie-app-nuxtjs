@@ -15,6 +15,8 @@
     "@chenfengyuan/vue-carousel": "^1.0.5",
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "bootstrap": "^4.5.0",
+    "bootstrap-vue": "^2.15.0",
     "nuxt": "^2.13.0",
     "vue-horizontal-list": "^1.0.7",
     "vue-loading-skeleton": "^1.1.9",
