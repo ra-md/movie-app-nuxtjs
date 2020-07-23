@@ -5,7 +5,7 @@
 				<font-awesome-icon class="text-md" icon="times" />
 			</button>
 			<input
-				class="border-gray-200 w-full outline-none md:pl-2 md:pr-8 md:border-2 md:rounded-md md:absolute md:h-full"
+				class="border-gray-200 w-full outline-none focus:border-primary md:pl-2 md:pr-8 md:border-2 md:rounded-md md:absolute md:h-full"
 				type="input"
 				placeholder="Search..."
 				:value="searchValue"
