@@ -7,7 +7,7 @@
 			<div class="lg:py-2 mb-4 flex flex-col lg:flex-row">
 				<div class="lg:w-2/5 lg:ml-8 lg:order-last">
 					<div class="relative overlay">
-						<img class="w-full lg:hidden" :src="`https://image.tmdb.org/t/p/w500/${detail.backdrop_path}`">
+						<img class="w-full min-h-64 lg:hidden" :src="`https://image.tmdb.org/t/p/w500/${detail.backdrop_path}`">
 						<img
 							class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 h-40 lg:rounded-md lg:h-auto lg:static lg:translate-x-0 lg:translate-y-0"
 							:src="`https://image.tmdb.org/t/p/w500/${detail.poster_path}`"
