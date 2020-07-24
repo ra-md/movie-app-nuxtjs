@@ -15,7 +15,7 @@
 					class="bg-gray-300 ml-3 font-medium shadow rounded-md p-1 w-full"
 					@click="changeMediaType('tv show')"
 				>
-					Tv Series
+					Tv Show
 				</button>
 			</div>
 			<SearchList :items="results" />

@@ -2,10 +2,10 @@
 	<div>
 		<Detail
 			type="TV"
-			:detail="tvSeries"
+			:detail="tvShow"
 			:cast="credits"
 			:trailer="trailer"
-			:similar="similarSeries"
+			:similar="similarShow"
 		/>
 	</div>
 </template>
@@ -15,45 +15,45 @@ import api from '~/api';
 import Detail from '~/components/Detail';
 
 export default {
-	name: 'TvSeriesDetail',
+	name: 'TvShowDetail',
 	components: {
 		Detail
 	},
 	data() {
 		return {
-			tvSeries: {},
+			tvShow: {},
 			credits: [],
 			trailer: {},
-			similarSeries: []
+			similarShow: []
 		};
 	},
 	created() {
 		const slug = this.$route.params.slug.split('-');
-		const seriesId = slug[slug.length - 1];
+		const showId = slug[slug.length - 1];
 
-		api.tv.details(seriesId)
+		api.tv.details(showId)
 		.then((res) => {
-			this.tvSeries = res.data;
+			this.tvShow = res.data;
 		});
 
-		api.tv.credits(seriesId)
+		api.tv.credits(showId)
 		.then((res) => {
 			this.credits = res.data.cast;
 		});
 
-		api.tv.trailer(seriesId)
+		api.tv.trailer(showId)
 		.then((res) => {
 			this.trailer = res.data.results[0];
 		});
 
-		api.tv.similar(seriesId)
+		api.tv.similar(showId)
 		.then((res) => {
-			this.similarSeries = res.data.results;
+			this.similarShow = res.data.results;
 		});
 	},
 	head() {
 		return {
-			titleTemplate: this.tvSeries.name
+			titleTemplate: this.tvShow.name
 		};
 	}
 };

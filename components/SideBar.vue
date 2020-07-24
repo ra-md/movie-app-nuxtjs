@@ -44,11 +44,11 @@ export default {
 				{ name: 'Trending', route: '/movies/trending' },
 				{ name: 'Popular', route: '/movies/popular' },
 				{ name: 'Upcoming', route: '/movies/upcoming' },
-				{ name: 'TV Series', route: '/tv-series', style: 'px-8 font-medium' },
-				{ name: 'Top Rated', route: '/tv-series/top-rated' },
-				{ name: 'Trending', route: '/tv-series/trending' },
-				{ name: 'Popular', route: '/tv-series/popular' },
-				{ name: 'Upcoming', route: '/tv-series/upcoming' }
+				{ name: 'TV Show', route: '/tv-show', style: 'px-8 font-medium' },
+				{ name: 'Top Rated', route: '/tv-show/top-rated' },
+				{ name: 'Trending', route: '/tv-show/trending' },
+				{ name: 'Popular', route: '/tv-show/popular' },
+				{ name: 'Upcoming', route: '/tv-show/upcoming' }
 			]
 		};
 	},

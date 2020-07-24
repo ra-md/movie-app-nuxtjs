@@ -1,5 +1,5 @@
 <template>
-	<nuxt-link :to="`/${item.title ? 'movies':'tv-series'}/${slug(item)}`">
+	<nuxt-link :to="`/${item.title ? 'movies':'tv-show'}/${slug(item)}`">
 		<div class="relative rounded-md flex hover:shadow-outline justify-center items-center p-2 cursor-pointer">
 			<div class="absolute h-full w-full bg-black bg-opacity-75 z-10 rounded-md" />
 			<img
