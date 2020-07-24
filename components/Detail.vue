@@ -71,10 +71,12 @@
 					</template>
 				</vue-horizontal-list>
 			</client-only>
-			<h1 class="px-2">
-				Similar Movies
-			</h1>
-			<HorizontalList :items="similar" />
+			<div v-if="similar.length !== 0">
+				<h1 class="px-2">
+					Similar Movies
+				</h1>
+				<HorizontalList :items="similar" />
+			</div>
 		</div>
 	</div>
 </template>
