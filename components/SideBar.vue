@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div :class="{'openSidebar': sidebar}" class="sidebar">
-			<SearchBar class="hidden mb-6 md:block" />
+			<SearchBar class="hidden mb-4 md:block" />
 			<ul>
 				<li
 					v-for="(list, index) in navList"

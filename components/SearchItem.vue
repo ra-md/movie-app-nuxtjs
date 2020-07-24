@@ -12,7 +12,7 @@
 				<img class="rounded-md h-40" loading="lazy" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
 				<div class="ml-4">
 					<h1 class="text-white">
-						{{ item.title }}
+						{{ item.title || item.name }}
 					</h1>
 					<p class="text-gray-200">
 						{{ sliceOverview }}

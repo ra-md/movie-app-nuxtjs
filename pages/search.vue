@@ -4,6 +4,20 @@
 			<Loading />
 		</div>
 		<div v-else class="flex flex-col items-center">
+			<div class="flex w-full mt-4 px-4">
+				<button
+					class="bg-primary font-medium text-white shadow rounded-md p-1 w-full"
+					@click="changeMediaType('movie')"
+				>
+						Movies
+				</button>
+				<button
+					class="bg-gray-300 ml-3 font-medium shadow rounded-md p-1 w-full"
+					@click="changeMediaType('tv show')"
+				>
+					Tv Series
+				</button>
+			</div>
 			<SearchList :items="results" />
 			<b-pagination
 				v-model="currentPage"
@@ -32,7 +46,8 @@ export default {
 			loading: true,
 			rows: 1,
       currentPage: 1,
-      perPage: 1
+      perPage: 1,
+      mediaType: 'movie'
 		};
 	},
 	watch: {
@@ -60,12 +75,17 @@ export default {
 	},
 	methods: {
 		fetchSearch() {
-			api.search(this.currentPage, this.$route.query.q)
+			api.search(this.mediaType, this.currentPage, this.$route.query.q)
 			.then((response) => {
 				this.loading = false;
 				this.rows = response.data.total_pages;
 				this.results = response.data.results;
 			});
+		},
+		changeMediaType(mediaType) {
+			this.mediaType = mediaType;
+			this.loading = true;
+			this.fetchSearch();
 		}
 	}
 };
