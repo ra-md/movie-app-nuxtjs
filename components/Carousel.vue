@@ -6,12 +6,14 @@
           <div v-for="trending in trendings" :key="trending.id">
             <div class="trending px-2">
               <Skeleton :loading="data.length === 0" height="15em">
-                <div class="bg">
-                  <img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${trending.backdrop_path}`">
-                </div>
-                <h1 class="title">
-                  {{ trending.title||trending.name }}
-                </h1>
+                <nuxt-link :to="`/${trending.title ? 'movies':'tv-show'}/${slug(trending)}`">
+                  <div class="bg">
+                    <img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${trending.backdrop_path}`">
+                  </div>
+                  <h1 class="title">
+                    {{ trending.title||trending.name }}
+                  </h1>
+                </nuxt-link>
               </Skeleton>
             </div>
           </div>
@@ -27,6 +29,7 @@ import VueSlickCarousel from 'vue-slick-carousel';
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 import api from '~/api';
+import convertToSlug from '~/utils/convertToSlug';
 
 export default {
   name: 'Carousel',
@@ -73,6 +76,14 @@ export default {
 
       this.data = data;
     });
+  },
+  methods: {
+    slug(item) {
+      if (item.id) {
+        const slug = convertToSlug(item.title || item.name, item.id);
+        return slug;
+      }
+    }
   }
 };
 </script>
