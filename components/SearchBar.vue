@@ -1,29 +1,30 @@
 <template>
 	<div>
-		<div class="flex text-black h-full w-full bg-white relative z-30 shadow-md md:shadow-none md:pt-4">
-			<button class="md:hidden px-3" @click="closeSearchBar">
-				<font-awesome-icon class="text-md" icon="times" />
-			</button>
-			<input
-				class="border-gray-200 w-full px-2 outline-none focus:border-primary md:w-32 md:border-2 md:h-10 md:rounded-md"
-				type="input"
-				placeholder="Search..."
-				:value="searchValue"
-				@input="e => searchValue = e.target.value"
-			>
-			<div class="relative">
-				<button
-					type="button"
-					class="inline-flex focus:outline-none hover:text-primary items-center justify-center h-full font-medium rounded-md text-sm capitalize md:pl-3"
-					aria-haspopup="true"
-					aria-expanded="true"
-					@click="toggleDropdown"
-				>
-					{{ mediaType }}
-					<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-						<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-					</svg>
+		<div class="relative z-30 h-full w-full shadow-md md:shadow-none md:pt-4">
+			<div class="flex text-black h-full w-full bg-white border-gray-300 md:rounded-md md:border-2">
+				<button class="md:hidden px-3" @click="closeSearchBar">
+					<font-awesome-icon class="text-md" icon="times" />
 				</button>
+				<input
+					class="w-full px-2 outline-none focus:border-primary md:w-32 md:h-10 md:rounded-md"
+					type="input"
+					placeholder="Search..."
+					:value="searchValue"
+					@input="e => searchValue = e.target.value"
+				>
+				<div class="relative">
+					<button
+						type="button"
+						class="inline-flex focus:outline-none hover:text-primary items-center justify-center h-full font-medium rounded-md text-sm capitalize"
+						aria-haspopup="true"
+						aria-expanded="true"
+						@click="toggleDropdown"
+					>
+						{{ mediaType }}
+						<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+						</svg>
+					</button>
 				<div v-show="dropdown" class="origin-top-right absolute right-0 mt-2 mr-2 rounded-md shadow-lg w-24 md:mr-0">
 					<div class="rounded-md bg-white shadow-xs">
 						<div role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
@@ -42,6 +43,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 			<div v-if="searchValue.length !== 0" class="max-h-screen w-full overflow-auto z-20 absolute bg-white top-0">
