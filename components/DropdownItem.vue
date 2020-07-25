@@ -5,3 +5,9 @@
 		<slot />
 	</button>
 </template>
+
+<script>
+export default {
+	name: 'DropdownItem'
+};
+</script>
