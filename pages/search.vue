@@ -4,15 +4,17 @@
 			<Loading />
 		</div>
 		<div v-else class="flex flex-col items-center">
-			<div class="flex w-full mt-4 px-4">
+			<div class="flex w-full mt-4 px-4 text-white">
 				<button
-					class="bg-primary font-medium text-white shadow rounded-md p-1 w-full"
+					:disabled="mediaType === 'movie'"
+					class="bg-primary font-medium shadow rounded-md p-1 w-full transform hover:scale-105"
 					@click="changeMediaType('movie')"
 				>
 						Movies
 				</button>
 				<button
-					class="bg-gray-300 ml-3 font-medium shadow rounded-md p-1 w-full"
+					:disabled="mediaType === 'tv show'"
+					class="bg-blue-500 ml-3 font-medium shadow rounded-md p-1 w-full transform hover:scale-105"
 					@click="changeMediaType('tv show')"
 				>
 					Tv Show
@@ -85,6 +87,7 @@ export default {
 		changeMediaType(mediaType) {
 			this.mediaType = mediaType;
 			this.loading = true;
+			this.currentPage = 1;
 			this.fetchSearch();
 		}
 	}
@@ -92,6 +95,14 @@ export default {
 </script>
 
 <style>
+button:disabled {
+	@apply bg-opacity-25 cursor-not-allowed;
+}
+
+button:disabled:hover {
+	@apply scale-100;
+}
+
 .pagination {
   display: flex;
   padding-left: 0;
