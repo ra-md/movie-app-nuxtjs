@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<div class="relative z-30 h-full w-full shadow-md md:shadow-none md:pt-4">
-			<div class="flex text-black h-full w-full bg-white border-gray-300 md:rounded-md md:border-2">
+		<div class="relative z-30 h-full w-full bg-white shadow-md md:shadow-none md:pt-4">
+			<div class="flex text-black h-full w-full relative bg-white border-gray-300 md:rounded-md md:border-2">
 				<button class="md:hidden px-3" @click="closeSearchBar">
 					<font-awesome-icon class="text-md" icon="times" />
 				</button>
@@ -12,38 +12,14 @@
 					:value="searchValue"
 					@input="e => searchValue = e.target.value"
 				>
-				<div class="relative">
-					<button
-						type="button"
-						class="inline-flex focus:outline-none hover:text-primary items-center justify-center h-full font-medium rounded-md text-sm capitalize"
-						aria-haspopup="true"
-						aria-expanded="true"
-						@click="toggleDropdown"
-					>
-						{{ mediaType }}
-						<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-							<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-						</svg>
-					</button>
-				<div v-show="dropdown" class="origin-top-right absolute right-0 mt-2 mr-2 rounded-md shadow-lg w-24 md:mr-0">
-					<div class="rounded-md bg-white shadow-xs">
-						<div role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-							<button
-								class="w-full block border-b border-gray-200 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-								@click="changeMediaType('movie'); toggleDropdown()"
-							>
-								Movie
-							</button>
-							<button
-								class="w-full block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-								@click="changeMediaType('tv show'); toggleDropdown()"
-							>
-								Tv Show
-							</button>
-						</div>
+				<Dropdown ref="dropdown" :media-type="mediaType">
+					<div @click="changeMediaType('movie'); toggleDropdown();">
+						<DropdownItem>Movie</DropdownItem>
 					</div>
-				</div>
-			</div>
+					<div @click="changeMediaType('tv show'); toggleDropdown();">
+						<DropdownItem>Tv Show</DropdownItem>
+					</div>
+				</Dropdown>
 			</div>
 		</div>
 			<div v-if="searchValue.length !== 0" class="max-h-screen w-full overflow-auto z-20 absolute bg-white top-0">
@@ -56,7 +32,7 @@
 					</div>
 					<div v-else>
 						<div v-for="result in results" :key="result.id" class="first:pt-2 border-b">
-							<nuxt-link :to="`/${result.title ? 'movies':'tv-series'}/${slug(result)}`">
+							<nuxt-link :to="`/${result.title ? 'movies':'tv-show'}/${slug(result)}`">
 								<p
 									class="cursor-pointer p-2 font-medium text-gray-600 hover:text-gray-900"
 									@click="deleteSearchValue(); closeSearchBar();"
@@ -66,7 +42,10 @@
 							</nuxt-link>
 						</div>
 						<div class="m-2">
-							<button class="w-full btn bg-primary text-white hover:shadow-outline" @click="seeMore">
+							<button
+								class="w-full btn bg-primary text-white hover:shadow-outline"
+								@click="seeMore();"
+							>
 								More Results
 							</button>
 						</div>
@@ -81,19 +60,22 @@ import Loading from './Loading';
 import api from '~/api';
 import debounce from '~/utils/debounce';
 import convertToSlug from '~/utils/convertToSlug';
+import Dropdown from '~/components/Dropdown';
+import DropdownItem from '~/components/DropdownItem';
 
 export default {
 	name: 'SearchBar',
 	components: {
-		Loading
+		Loading,
+		Dropdown,
+		DropdownItem
 	},
 	data() {
 		return {
 			searchValue: '',
 			results: [],
 			loading: false,
-			mediaType: 'movie',
-			dropdown: false
+			mediaType: 'movie'
 		};
 	},
 	watch: {
@@ -140,7 +122,7 @@ export default {
 			this.deleteSearchValue();
 		},
 		toggleDropdown() {
-			this.dropdown = !this.dropdown;
+			this.$refs.dropdown.toggleDropdown();
 		},
 		changeMediaType(mediaType) {
 			this.mediaType = mediaType;

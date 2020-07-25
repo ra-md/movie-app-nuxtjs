@@ -4,7 +4,7 @@
 			<Loading />
 		</div>
 		<div v-else>
-			<div class="lg:py-2 mb-4 flex flex-col lg:flex-row">
+			<div class="mb-4 flex flex-col lg:py-6 lg:flex-row">
 				<div class="lg:w-2/5 lg:ml-8 lg:order-last">
 					<div class="relative overlay">
 						<img class="w-full min-h-64 lg:hidden" :src="`https://image.tmdb.org/t/p/w500/${detail.backdrop_path}`">

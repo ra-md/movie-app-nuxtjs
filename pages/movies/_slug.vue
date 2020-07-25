@@ -48,7 +48,6 @@ export default {
 
 		api.movie.similar(movieId)
 		.then((res) => {
-			console.log(res);
 			this.similarMovies = res.data.results;
 		});
 	},
