@@ -23,7 +23,6 @@
 			</div>
 		</div>
 		<QuickSearchList
-			v-if="searchValue.length !== 0"
 			:search-value="searchValue"
 			:media-type="mediaType"
 			@close-search-bar="closeSearchBar"

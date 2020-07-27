@@ -1,13 +1,11 @@
 <template>
 	<div>
-		<div v-if="!detail.id">
-			<Loading />
-		</div>
-		<div v-else>
+		<div>
 			<div class="mb-4 flex flex-col lg:py-6 lg:flex-row">
 				<div class="lg:w-2/5 lg:ml-8 lg:order-last">
-					<div class="relative overlay">
-						<img class="w-full min-h-64 lg:hidden" :src="`https://image.tmdb.org/t/p/w500/${detail.backdrop_path}`">
+					<LoadingTEST v-if="loading" height="h-56 lg:h-full" rounded="lg:rounded-md" />
+					<div v-else class="relative overlay">
+						<img class="w-full min-h-48 md:min-h-64 lg:hidden" :src="`https://image.tmdb.org/t/p/w500/${detail.backdrop_path}`">
 						<img
 							class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 h-40 lg:rounded-md lg:h-auto lg:static lg:translate-x-0 lg:translate-y-0"
 							:src="`https://image.tmdb.org/t/p/w500/${detail.poster_path}`"
@@ -17,38 +15,54 @@
 				<div class="bg-white shadow-md p-4 flex flex-col lg:w-3/5 lg:rounded-md lg:order-first">
 					<div class="lg:my-0 lg:order-last">
 						<div class="mb-1">
-							<h1>
+							<LoadingTEST v-if="loading" height="h-6" width="w-64" rounded="rounded-md" />
+							<h1 v-else>
 								{{ detail.title || detail.name }} ({{ year }})
 							</h1>
 						</div>
 						<div class="mb-1">
-							<font-awesome-icon icon="film" />
-							<span v-for="genre in detail.genres" :key="genre.id" class="pr-2 text-lg">
-								{{ genre.name }},
-							</span>
-							<span class="text-lg">{{ type }}.</span>
+							<LoadingTEST v-if="loading" height="h-6" width="w-48" rounded="rounded-md" />
+							<div v-else>
+								<font-awesome-icon icon="film" />
+								<span v-for="genre in detail.genres" :key="genre.id" class="pr-2 text-lg">
+									{{ genre.name }},
+								</span>
+								<span class="text-lg">{{ type }}.</span>
+							</div>
 						</div>
 						<div class="mb-1">
-							<font-awesome-icon icon="hourglass" />
-							<span class="ml-1 text-lg">
-								{{ type === 'TV' ? detail.episode_run_time[0] : detail.runtime }} minutes
-							</span>
+							<LoadingTEST v-if="loading" height="h-6" width="w-32" rounded="rounded-md" />
+							<div v-else>
+								<font-awesome-icon icon="hourglass" />
+								<span class="ml-1 text-lg">
+									{{ type === 'TV' ? detail.episode_run_time[0] : detail.runtime }} minutes
+								</span>
+							</div>
 						</div>
 						<div class="mb-1">
-							<font-awesome-icon class="text-yellow-400" icon="star" />
-							<span class="text-lg">{{ detail.vote_average }}<span class="font-thin">/10</span></span>
+							<LoadingTEST v-if="loading" height="h-6" width="w-24" rounded="rounded-md" />
+							<div v-else>
+								<font-awesome-icon class="text-yellow-400" icon="star" />
+								<span class="text-lg">{{ detail.vote_average }}<span class="font-thin">/10</span></span>
+							</div>
 						</div>
 						<div class="overflow-auto lg:h-24 lg:shadow-inner">
-							<p class="p-2">
+							<LoadingTEST v-if="loading" height="h-40 lg:h-full" />
+							<p v-else class="p-2">
 								{{ detail.overview }}
 							</p>
 						</div>
 					</div>
-					<iframe
-						v-if="trailer"
-						class="w-full mb-4 shadow-md h-48 md:h-64 lg:order-first lg:rounded-md lg:h-3/5"
-						:src="`https://www.youtube.com/embed/${trailer.key}`"
-					/>
+					<div class="h-48 md:h-64 lg:order-first lg:h-3/5">
+						<LoadingTEST v-if="loading" class="mt-2 lg:mt-0 lg:mb-8" height="h-full lg:h-84" rounded="rounded-md" />
+						<div v-else class="h-full">
+							<iframe
+								v-if="trailer"
+								class="w-full h-full mb-4 shadow-md lg:rounded-md lg:min-h-3/5"
+								:src="`https://www.youtube.com/embed/${trailer.key}`"
+							/>
+						</div>
+					</div>
 				</div>
 			</div>
 			<client-only v-if="cast.length !== 0">
@@ -83,13 +97,13 @@
 
 <script>
 import HorizontalList from '~/components/HorizontalList';
-import Loading from '~/components/Loading';
+import LoadingTEST from '~/components/LoadingTEST';
 
 export default {
 	name: 'Detail',
 	components: {
 		HorizontalList,
-		Loading
+		LoadingTEST
 	},
 	props: {
 		type: {
@@ -137,6 +151,13 @@ export default {
 			} else {
 				const year = this.detail.release_date.split('-')[0];
 				return year;
+			}
+		},
+		loading() {
+			if (this.detail.id) {
+				return false;
+			} else {
+				return true;
 			}
 		}
 	}

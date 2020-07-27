@@ -5,16 +5,15 @@
         <VueSlickCarousel v-bind="settings">
           <div v-for="trending in trendings" :key="trending.id">
             <div class="trending px-2">
-              <Skeleton :loading="data.length === 0" height="15em">
-                <nuxt-link :to="`/${trending.title ? 'movies':'tv-show'}/${slug(trending)}`">
-                  <div class="bg">
-                    <img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${trending.backdrop_path}`">
-                  </div>
-                  <h1 class="title">
-                    {{ trending.title||trending.name }}
-                  </h1>
-                </nuxt-link>
-              </Skeleton>
+              <LoadingTEST v-if="data.length === 0" height="h-32 lg:h-56" rounded="rounded-md" />
+              <nuxt-link v-else :to="`/${trending.title ? 'movies':'tv-show'}/${slug(trending)}`">
+                <div class="bg">
+                  <img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${trending.backdrop_path}`">
+                </div>
+                <h1 class="title">
+                  {{ trending.title||trending.name }}
+                </h1>
+              </nuxt-link>
             </div>
           </div>
         </VueSlickCarousel>
@@ -24,8 +23,8 @@
 </template>
 
 <script>
-import { Skeleton } from 'vue-loading-skeleton';
 import VueSlickCarousel from 'vue-slick-carousel';
+import LoadingTEST from './LoadingTEST';
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 import api from '~/api';
@@ -34,7 +33,7 @@ import convertToSlug from '~/utils/convertToSlug';
 export default {
   name: 'Carousel',
   components: {
-    Skeleton,
+    LoadingTEST,
     VueSlickCarousel
   },
   data() {

@@ -2,29 +2,28 @@
 	<client-only>
 		<vue-horizontal-list :items="isLoading ? fakeItems : items" :options="options">
 			<template v-slot:default="{ item }">
-				<Skeleton :loading="isLoading" height="13em">
-					<nuxt-link :to="`/${item.title ? 'movies':'tv-show'}/${slug(item)}`">
-						<div class="item relative rounded-md shadow-md">
-							<img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
-							<p class="movie-title">
-								{{ item.title || item.name }}
-							</p>
-						</div>
-					</nuxt-link>
-				</Skeleton>
+				<LoadingTEST v-if="isLoading" height="h-32 md:h-48" rounded="rounded-md" />
+				<nuxt-link v-else :to="`/${item.title ? 'movies':'tv-show'}/${slug(item)}`">
+					<div class="item relative rounded-md shadow-md">
+						<img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
+						<p class="movie-title">
+							{{ item.title || item.name }}
+						</p>
+					</div>
+				</nuxt-link>
 			</template>
 		</vue-horizontal-list>
 	</client-only>
 </template>
 
 <script>
-import { Skeleton } from 'vue-loading-skeleton';
+import LoadingTEST from './LoadingTEST';
 import convertToSlug from '~/utils/convertToSlug';
 
 export default {
 	name: 'HorizontalList',
 	components: {
-		Skeleton
+		LoadingTEST
 	},
 	props: {
 		items: {

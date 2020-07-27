@@ -1,9 +1,6 @@
 <template>
 	<div>
-		<div v-if="loading">
-			<Loading />
-		</div>
-		<div v-else class="flex flex-col items-center">
+		<div class="flex flex-col items-center">
 			<div class="flex w-full mt-4 px-4 text-white">
 				<button
 					:disabled="mediaType === 'movie'"
@@ -22,6 +19,7 @@
 			</div>
 			<SearchList :items="results" />
 			<b-pagination
+				v-if="!loading"
 				v-model="currentPage"
 				class="my-4 md:mb-8"
 				:total-rows="rows"
@@ -34,12 +32,10 @@
 
 <script>
 import { BPagination } from 'bootstrap-vue';
-import Loading from '~/components/Loading';
 import api from '~/api';
 
 export default {
 	components: {
-		Loading,
 		'b-pagination': BPagination
 	},
 	data() {
@@ -88,6 +84,7 @@ export default {
 			this.mediaType = mediaType;
 			this.loading = true;
 			this.currentPage = 1;
+			this.results = [];
 			this.fetchSearch();
 		}
 	}

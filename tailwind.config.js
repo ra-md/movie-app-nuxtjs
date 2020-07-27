@@ -8,9 +8,12 @@ module.exports = {
   theme: {
     extend: {
       minHeight: {
-        '64': '16rem'
+        '48': '12rem',
+        '64': '16rem',
+        '3/5': '60%'
       },
       maxHeight: {
+        '40': '10rem',
         '64': '16rem'
       },
       height: {
@@ -21,6 +24,10 @@ module.exports = {
       },
       colors: {
         'primary': '#007bff'
+      },
+      spacing: {
+        '84': '21rem',
+        '124': '31rem'
       }
     }
   },
