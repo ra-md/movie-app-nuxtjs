@@ -9,19 +9,24 @@
 				<Item :index="index+1" :item="item" />
 			</div>
 		</div>
-		<Loading v-if="items.length !== 0" height="h-32" />
+		<div v-if="items.length !== 0">
+			<Observer @intersec="$emit('intersec')" />
+			<Loading height="h-32" />
+		</div>
 	</div>
 </template>
 
 <script>
 import Item from './Item';
 import Loading from '~/components/Loading';
+import Observer from '~/components/Observer';
 
 export default {
 	name: 'ItemList',
 	components: {
 		Item,
-		Loading
+		Loading,
+		Observer
 	},
 	props: {
 		items: {

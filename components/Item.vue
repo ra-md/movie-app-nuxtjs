@@ -2,7 +2,11 @@
 	<nuxt-link :to="`/${item.title ? 'movies' : 'tv-show'}/${slug(item)}`">
 		<SkeletonLoading v-if="loading" height="h-56 md:h-64" />
 		<div v-else class="h-56 md:h-auto">
-			<img class="rounded-t-md h-full md:h-auto lg:min-h-72" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
+			<img
+				loading="lazy"
+				class="rounded-t-md h-full md:h-auto lg:min-h-76"
+				:src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`"
+			>
 		</div>
 		<div class="py-1 px-2">
 			<SkeletonLoading v-if="loading" height="h-6" rounded="rounded-b-md" />

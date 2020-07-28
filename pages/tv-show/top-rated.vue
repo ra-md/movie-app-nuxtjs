@@ -1,27 +1,14 @@
 <template>
-	<div>
-		<ItemList :items="results" />
-	</div>
+	<PageWithApiCall media-type="tv" api-call-type="topRated" />
 </template>
 
 <script>
-import api from '~/api';
-import ItemList from '~/components/ItemList';
+import PageWithApiCall from '~/components/PageWithApiCall';
 
 export default {
-	name: 'TopRatedTVShow',
+	name: 'TopRatedMovies',
 	components: {
-		ItemList
-	},
-	data() {
-		return {
-			results: [],
-			page: 1
-		};
-	},
-	async created() {
-		const { data } = await api.tv.topRated(this.page);
-		this.results = data.results;
+		PageWithApiCall
 	}
 };
 </script>
