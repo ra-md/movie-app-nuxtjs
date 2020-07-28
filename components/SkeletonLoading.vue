@@ -7,7 +7,7 @@
 
 <script>
 export default {
-	name: 'LoadingTEST',
+	name: 'SkeletonLoading',
 	props: {
 		height: {
 			type: String,
@@ -22,7 +22,7 @@ export default {
 		rounded: {
 			type: String,
 			default() {
-				return 'rounded-none';
+				return 'none';
 			}
 		}
 	}

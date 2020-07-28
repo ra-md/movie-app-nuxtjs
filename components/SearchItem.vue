@@ -10,19 +10,17 @@
 					:src="`https://image.tmdb.org/t/p/w500/${item.backdrop_path}`"
 				>
 				<div class="relative z-20 flex max-h-40 w-full overflow-hidden">
-					<LoadingTEST v-if="loading" height="h-32" width="w-40" rounded="rounded-md" />
+					<SkeletonLoading v-if="loading" height="h-32" width="w-40" rounded="rounded-md" />
 					<img v-else class="rounded-md h-40" loading="lazy" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
 					<div class="ml-4 w-3/5 md:w-full">
-						<LoadingTEST v-if="loading" height="h-6" width="w-64" class="mb-4" />
+						<SkeletonLoading v-if="loading" height="h-6" width="w-64" class="mb-4" />
 						<h1 v-else class="text-white">
 							{{ item.title || item.name }}
 						</h1>
-						<LoadingTEST v-if="loading" height="h-3" width="w-48" class="mb-2" />
+						<SkeletonLoading v-if="loading" height="h-3" width="w-48" class="mb-2" />
 						<p v-else class="text-gray-200">
 							{{ sliceOverview }}
 						</p>
-						<LoadingTEST v-if="loading" height="h-3" width="w-48" class="mb-2" />
-						<LoadingTEST v-if="loading" height="h-3" width="w-48" />
 					</div>
 				</div>
 			</div>
@@ -32,12 +30,12 @@
 
 <script>
 import convertToSlug from '~/utils/convertToSlug';
-import LoadingTEST from '~/components/LoadingTEST';
+import SkeletonLoading from '~/components/SkeletonLoading';
 
 export default {
 	name: 'SearchItem',
 	components: {
-		LoadingTEST
+		SkeletonLoading
 	},
 	props: {
 		item: {

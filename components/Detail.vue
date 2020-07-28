@@ -3,7 +3,7 @@
 		<div>
 			<div class="mb-4 flex flex-col lg:py-6 lg:flex-row">
 				<div class="lg:w-2/5 lg:ml-8 lg:order-last">
-					<LoadingTEST v-if="loading" height="h-56 lg:h-full" rounded="lg:rounded-md" />
+					<SkeletonLoading v-if="loading" height="h-56 lg:h-full" rounded="lg:rounded-md" />
 					<div v-else class="relative overlay">
 						<img class="w-full min-h-48 md:min-h-64 lg:hidden" :src="`https://image.tmdb.org/t/p/w500/${detail.backdrop_path}`">
 						<img
@@ -15,13 +15,13 @@
 				<div class="bg-white shadow-md p-4 flex flex-col lg:w-3/5 lg:rounded-md lg:order-first">
 					<div class="lg:my-0 lg:order-last">
 						<div class="mb-1">
-							<LoadingTEST v-if="loading" height="h-6" width="w-64" rounded="rounded-md" />
+							<SkeletonLoading v-if="loading" height="h-6" width="w-64" rounded="rounded-md" />
 							<h1 v-else>
 								{{ detail.title || detail.name }} ({{ year }})
 							</h1>
 						</div>
 						<div class="mb-1">
-							<LoadingTEST v-if="loading" height="h-6" width="w-48" rounded="rounded-md" />
+							<SkeletonLoading v-if="loading" height="h-6" width="w-48" rounded="rounded-md" />
 							<div v-else>
 								<font-awesome-icon icon="film" />
 								<span v-for="genre in detail.genres" :key="genre.id" class="pr-2 text-lg">
@@ -31,7 +31,7 @@
 							</div>
 						</div>
 						<div class="mb-1">
-							<LoadingTEST v-if="loading" height="h-6" width="w-32" rounded="rounded-md" />
+							<SkeletonLoading v-if="loading" height="h-6" width="w-32" rounded="rounded-md" />
 							<div v-else>
 								<font-awesome-icon icon="hourglass" />
 								<span class="ml-1 text-lg">
@@ -40,21 +40,21 @@
 							</div>
 						</div>
 						<div class="mb-1">
-							<LoadingTEST v-if="loading" height="h-6" width="w-24" rounded="rounded-md" />
+							<SkeletonLoading v-if="loading" height="h-6" width="w-24" rounded="rounded-md" />
 							<div v-else>
 								<font-awesome-icon class="text-yellow-400" icon="star" />
 								<span class="text-lg">{{ detail.vote_average }}<span class="font-thin">/10</span></span>
 							</div>
 						</div>
 						<div class="overflow-auto lg:h-24 lg:shadow-inner">
-							<LoadingTEST v-if="loading" height="h-40 lg:h-full" />
+							<SkeletonLoading v-if="loading" height="h-40 lg:h-full" />
 							<p v-else class="p-2">
 								{{ detail.overview }}
 							</p>
 						</div>
 					</div>
 					<div class="h-48 md:h-64 lg:order-first lg:h-3/5">
-						<LoadingTEST v-if="loading" class="mt-2 lg:mt-0 lg:mb-8" height="h-full lg:h-84" rounded="rounded-md" />
+						<SkeletonLoading v-if="loading" class="mt-2 lg:mt-0 lg:mb-8" height="h-full lg:h-84" rounded="rounded-md" />
 						<div v-else class="h-full">
 							<iframe
 								v-if="trailer"
@@ -97,13 +97,13 @@
 
 <script>
 import HorizontalList from '~/components/HorizontalList';
-import LoadingTEST from '~/components/LoadingTEST';
+import SkeletonLoading from '~/components/SkeletonLoading';
 
 export default {
 	name: 'Detail',
 	components: {
 		HorizontalList,
-		LoadingTEST
+		SkeletonLoading
 	},
 	props: {
 		type: {

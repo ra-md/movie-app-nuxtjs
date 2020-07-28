@@ -2,7 +2,7 @@
 	<div v-if="searchValue.length !== 0" class="max-h-screen w-full overflow-auto z-20 absolute bg-white top-0">
 		<div v-if="loading" class="mt-16 px-2">
 			<div v-for="i in 15" :key="i" class="mb-4">
-				<LoadingTEST height="h-8" />
+				<SkeletonLoading height="h-8" />
 			</div>
 		</div>
 		<div v-else :class="{'mt-12': results.length !== 0}">
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import LoadingTEST from './LoadingTEST';
+import SkeletonLoading from './SkeletonLoading';
 import QuickSearchItem from './QuickSearchItem';
 import debounce from '~/utils/debounce';
 import api from '~/api';
@@ -39,7 +39,7 @@ import api from '~/api';
 export default {
 	name: 'QuickSearchList',
 	components: {
-		LoadingTEST,
+		SkeletonLoading,
 		QuickSearchItem
 	},
 	props: {
