@@ -20,9 +20,6 @@ const movie = {
 	popular(page) {
 		return axiosInstance.get('movie/popular', params(page));
 	},
-	trending() {
-		return 'trending movie';
-	},
 	details(id) {
 		return axiosInstance.get(`movie/${id}`, params());
 	},
@@ -33,16 +30,16 @@ const movie = {
 		return axiosInstance.get(`movie/${id}/videos`, params());
 	},
 	similar(id) {
-		return axiosInstance.get(`/movie/${id}/similar`, params());
+		return axiosInstance.get(`movie/${id}/similar`, params());
+	},
+	topRated(page) {
+		return axiosInstance.get('movie/top_rated', params(page));
 	}
 };
 
 const tv = {
 	popular: (page) => {
 		return axiosInstance.get('tv/popular', params(page));
-	},
-	trending() {
-		return 'trending movie';
 	},
 	details(id) {
 		return axiosInstance.get(`tv/${id}`, params());
@@ -55,6 +52,9 @@ const tv = {
 	},
 	similar(id) {
 		return axiosInstance.get(`/tv/${id}/similar`, params());
+	},
+	topRated(page) {
+		return axiosInstance.get('tv/top_rated', params(page));
 	}
 };
 

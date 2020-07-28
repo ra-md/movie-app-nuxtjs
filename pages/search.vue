@@ -19,7 +19,7 @@
 			</div>
 			<SearchList :items="results" />
 			<b-pagination
-				v-if="!loading"
+				v-if="results.length !== 0"
 				v-model="currentPage"
 				class="my-4 md:mb-8"
 				:total-rows="rows"
@@ -53,8 +53,8 @@ export default {
 			if (newRouter.query.q !== oldRouter.query.q) {
 				this.currentPage = 1;
 			}
+			this.results = [];
 			this.fetchSearch();
-			this.loading = true;
 			window.scrollTo(0, 0);
 		},
 		currentPage() {
@@ -75,14 +75,12 @@ export default {
 		fetchSearch() {
 			api.search(this.mediaType, this.currentPage, this.$route.query.q)
 			.then((response) => {
-				this.loading = false;
 				this.rows = response.data.total_pages;
 				this.results = response.data.results;
 			});
 		},
 		changeMediaType(mediaType) {
 			this.mediaType = mediaType;
-			this.loading = true;
 			this.currentPage = 1;
 			this.results = [];
 			this.fetchSearch();

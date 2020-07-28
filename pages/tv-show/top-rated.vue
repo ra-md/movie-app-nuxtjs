@@ -9,7 +9,7 @@ import api from '~/api';
 import ItemList from '~/components/ItemList';
 
 export default {
-	name: 'TopRatedMovies',
+	name: 'TopRatedTVShow',
 	components: {
 		ItemList
 	},
@@ -20,7 +20,7 @@ export default {
 		};
 	},
 	async created() {
-		const { data } = await api.movie.topRated(this.page);
+		const { data } = await api.tv.topRated(this.page);
 		this.results = data.results;
 	}
 };
