@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<MovieORTvList :items="results" @intersec="intersected" />
+		<MovieORTvList :items="results" :page="page" :total-pages="totalPages" @intersec="intersected" />
 	</div>
 </template>
 
@@ -26,7 +26,8 @@ export default {
 	data() {
 		return {
 			results: [],
-			page: 1
+			page: 1,
+			totalPages: 0
 		};
 	},
 	watch: {
@@ -40,6 +41,7 @@ export default {
 	methods: {
 		async fetchApi() {
 			const { data } = await api[this.mediaType][this.apiCallType](this.page);
+			this.totalPages = data.total_pages;
 			this.results.push(...data.results);
 		},
 		intersected() {

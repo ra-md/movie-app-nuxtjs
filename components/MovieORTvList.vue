@@ -9,9 +9,9 @@
 				<MovieORTvItem :index="index+1" :item="item" />
 			</div>
 		</div>
-		<div v-if="items.length !== 0">
-			<Observer @intersec="$emit('intersec')" />
+		<div v-if="items.length !== 0 && page !== totalPages">
 			<Loading height="h-32" />
+			<Observer @intersec="$emit('intersec')" />
 		</div>
 	</div>
 </template>
@@ -31,6 +31,14 @@ export default {
 	props: {
 		items: {
 			type: Array,
+			required: true
+		},
+		page: {
+			type: Number,
+			required: true
+		},
+		totalPages: {
+			type: Number,
 			required: true
 		}
 	},
