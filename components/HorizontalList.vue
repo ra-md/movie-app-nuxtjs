@@ -35,7 +35,7 @@ export default {
 		return {
 			options: {
 				responsive: [
-					{ end: 576, size: 3 },
+					{ end: 576, size: 2 },
 					{ start: 576, end: 1024, size: 5 },
 					{ size: 7 }
 				]
