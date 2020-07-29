@@ -4,7 +4,7 @@
 		<div v-else class="h-56 md:h-auto">
 			<img
 				loading="lazy"
-				class="rounded-t-md h-full md:h-auto lg:min-h-76"
+				class="rounded-t-md w-full object-cover h-full md:h-auto lg:min-h-76"
 				:src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`"
 			>
 		</div>
@@ -22,7 +22,7 @@ import SkeletonLoading from './SkeletonLoading';
 import convertToSlug from '~/utils/convertToSlug';
 
 export default {
-	name: 'Item',
+	name: 'MovieORTvItem',
 	components: {
 		SkeletonLoading
 	},

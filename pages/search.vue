@@ -11,7 +11,7 @@
 				</button>
 				<button
 					:disabled="mediaType === 'tv show'"
-					class="bg-blue-500 ml-3 font-medium shadow rounded-md p-1 w-full transform hover:scale-105"
+					class="bg-blue-500 ml-4 font-medium shadow rounded-md p-1 w-full transform hover:scale-105"
 					@click="changeMediaType('tv show')"
 				>
 					Tv Show

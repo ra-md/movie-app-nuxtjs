@@ -1,14 +1,14 @@
 <template>
-	<PageWithApiCall media-type="movie" api-call-type="topRated" />
+	<ComponentWithApiCall media-type="movie" api-call-type="topRated" />
 </template>
 
 <script>
-import PageWithApiCall from '~/components/PageWithApiCall';
+import ComponentWithApiCall from '~/components/ComponentWithApiCall';
 
 export default {
 	name: 'TopRatedMovies',
 	components: {
-		PageWithApiCall
+		ComponentWithApiCall
 	}
 };
 </script>

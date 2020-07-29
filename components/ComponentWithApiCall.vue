@@ -1,17 +1,17 @@
 <template>
 	<div>
-		<ItemList :items="results" @intersec="intersected" />
+		<MovieORTvList :items="results" @intersec="intersected" />
 	</div>
 </template>
 
 <script>
-import ItemList from './ItemList';
+import MovieORTvList from './MovieORTvList';
 import api from '~/api';
 
 export default {
-	name: 'PageWithApiCall',
+	name: 'ComponentWithApiCall',
 	components: {
-		ItemList
+		MovieORTvList
 	},
 	props: {
 		mediaType: {
