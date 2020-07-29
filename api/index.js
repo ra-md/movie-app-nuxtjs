@@ -16,54 +16,31 @@ function params(page = 1, option = {}) {
 	};
 }
 
-const movie = {
-	popular(page) {
-		return axiosInstance.get('movie/popular', params(page));
+const api = {
+	trending(mediaType, time) {
+		return axiosInstance.get(`trending/${mediaType}/${time}`, params());
 	},
-	details(id) {
-		return axiosInstance.get(`movie/${id}`, params());
+	search(mediaType, page, query) {
+		return axiosInstance.get(`search/${mediaType === 'tv show' ? 'tv' : 'movie'}`, params(page, { query }));
 	},
-	credits(id) {
-		return axiosInstance.get(`movie/${id}/credits`, params());
+	details(mediaType, id) {
+		return axiosInstance.get(`${mediaType}/${id}`, params());
 	},
-	trailer(id) {
-		return axiosInstance.get(`movie/${id}/videos`, params());
+	credits(mediaType, id) {
+		return axiosInstance.get(`${mediaType}/${id}/credits`, params());
 	},
-	similar(id) {
-		return axiosInstance.get(`movie/${id}/similar`, params());
+	trailer(mediaType, id) {
+		return axiosInstance.get(`${mediaType}/${id}/videos`, params());
 	},
-	topRated(page) {
-		return axiosInstance.get('movie/top_rated', params(page));
+	similar(mediaType, id) {
+		return axiosInstance.get(`${mediaType}/${id}/similar`, params());
+	},
+	topRated(mediaType, page) {
+		return axiosInstance.get(`${mediaType}/top_rated`, params(page));
+	},
+	popular(mediaType, page) {
+		return axiosInstance.get(`${mediaType}/popular`, params(page));
 	}
 };
 
-const tv = {
-	popular: (page) => {
-		return axiosInstance.get('tv/popular', params(page));
-	},
-	details(id) {
-		return axiosInstance.get(`tv/${id}`, params());
-	},
-	credits(id) {
-		return axiosInstance.get(`tv/${id}/credits`, params());
-	},
-	trailer(id) {
-		return axiosInstance.get(`tv/${id}/videos`, params());
-	},
-	similar(id) {
-		return axiosInstance.get(`/tv/${id}/similar`, params());
-	},
-	topRated(page) {
-		return axiosInstance.get('tv/top_rated', params(page));
-	}
-};
-
-function trending(mediaType, time) {
-	return axiosInstance.get(`trending/${mediaType}/${time}`, params());
-}
-
-function search(mediaType, page, query) {
-	return axiosInstance.get(`search/${mediaType === 'tv show' ? 'tv' : 'movie'}`, params(page, { query }));
-}
-
-export default { movie, tv, trending, search };
+export default api;

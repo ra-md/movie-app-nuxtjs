@@ -31,22 +31,22 @@ export default {
 		const slug = this.$route.params.slug.split('-');
 		const showId = slug[slug.length - 1];
 
-		api.tv.details(showId)
+		api.details('tv', showId)
 		.then((res) => {
 			this.tvShow = res.data;
 		});
 
-		api.tv.credits(showId)
+		api.credits('tv', showId)
 		.then((res) => {
 			this.credits = res.data.cast;
 		});
 
-		api.tv.trailer(showId)
+		api.trailer('tv', showId)
 		.then((res) => {
 			this.trailer = res.data.results[0];
 		});
 
-		api.tv.similar(showId)
+		api.similar('tv', showId)
 		.then((res) => {
 			this.similarShow = res.data.results;
 		});

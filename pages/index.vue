@@ -43,12 +43,12 @@ export default {
 		};
 	},
 	created() {
-		api.movie.popular(1)
+		api.popular('movie', 1)
 		.then((res) => {
 			this.movies = res.data.results;
 		});
 
-		api.tv.popular(1)
+		api.popular('tv', 1)
 		.then((res) => {
 			this.tv = res.data.results;
 		});

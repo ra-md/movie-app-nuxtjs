@@ -40,7 +40,7 @@ export default {
 	},
 	methods: {
 		async fetchApi() {
-			const { data } = await api[this.mediaType][this.apiCallType](this.page);
+			const { data } = await api[this.apiCallType](this.mediaType, this.page);
 			this.totalPages = data.total_pages;
 			this.results.push(...data.results);
 		},
