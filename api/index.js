@@ -40,6 +40,9 @@ const api = {
 	},
 	popular(mediaType, page) {
 		return axiosInstance.get(`${mediaType}/popular`, params(page));
+	},
+	nowPlaying(mediaType, page) {
+		return axiosInstance.get(`${mediaType}/now_playing`, params(page));
 	}
 };
 

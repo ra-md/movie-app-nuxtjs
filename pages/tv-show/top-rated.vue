@@ -9,6 +9,9 @@ export default {
 	name: 'TopRatedMovies',
 	components: {
 		ComponentWithApiCall
+	},
+	head: {
+		titleTemplate: 'Top Rated Tv Show'
 	}
 };
 </script>

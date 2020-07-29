@@ -1,6 +1,12 @@
 <template>
 	<div>
-		<MovieORTvList :items="results" :page="page" :total-pages="totalPages" @intersec="intersected" />
+		<MovieORTvList
+			:items="results"
+			:page="page"
+			:total-pages="totalPages"
+			:is-trending="isTrending"
+			@intersec="intersected"
+		/>
 	</div>
 </template>
 
@@ -30,6 +36,15 @@ export default {
 			totalPages: 0
 		};
 	},
+	computed: {
+		isTrending() {
+			if (this.apiCallType === 'trending') {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	},
 	watch: {
 		page() {
 			this.fetchApi();
@@ -40,12 +55,14 @@ export default {
 	},
 	methods: {
 		async fetchApi() {
-			const { data } = await api[this.apiCallType](this.mediaType, this.page);
+			const { data } = await api[this.apiCallType](this.mediaType, this.isTrending ? 'week' : this.page);
 			this.totalPages = data.total_pages;
 			this.results.push(...data.results);
 		},
 		intersected() {
-			this.page++;
+			if (!this.isTrending) {
+				this.page++;
+			}
 		}
 	}
 };

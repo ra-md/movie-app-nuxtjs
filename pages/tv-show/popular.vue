@@ -1,17 +1,17 @@
 <template>
-	<ComponentWithApiCall media-type="movie" api-call-type="topRated" />
+	<ComponentWithApiCall media-type="tv" api-call-type="popular" />
 </template>
 
 <script>
 import ComponentWithApiCall from '~/components/ComponentWithApiCall';
 
 export default {
-	name: 'TopRatedMovies',
+	name: 'PopularTVShow',
 	components: {
 		ComponentWithApiCall
 	},
 	head: {
-		titleTemplate: 'Top Rated Movies'
+		titleTemplate: 'Popular Tv Show'
 	}
 };
 </script>

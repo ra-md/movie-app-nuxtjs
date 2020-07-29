@@ -43,12 +43,10 @@ export default {
 				{ name: 'Top Rated', route: '/movies/top-rated' },
 				{ name: 'Trending', route: '/movies/trending' },
 				{ name: 'Popular', route: '/movies/popular' },
-				{ name: 'Upcoming', route: '/movies/upcoming' },
 				{ name: 'TV Show', route: '/tv-show', style: 'px-8 font-medium' },
 				{ name: 'Top Rated', route: '/tv-show/top-rated' },
 				{ name: 'Trending', route: '/tv-show/trending' },
-				{ name: 'Popular', route: '/tv-show/popular' },
-				{ name: 'Upcoming', route: '/tv-show/upcoming' }
+				{ name: 'Popular', route: '/tv-show/popular' }
 			]
 		};
 	},
