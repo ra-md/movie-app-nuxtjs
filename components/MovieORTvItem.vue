@@ -8,11 +8,13 @@
 				:src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`"
 			>
 		</div>
-		<div class="py-1 px-2">
+		<div class="py-1 px-2 relative">
 			<SkeletonLoading v-if="loading" height="h-6" rounded="rounded-b-md" />
-			<p v-else class="whitespace-no-wrap">
-				{{ index }}. {{ item.title || item.name }}
-			</p>
+			<div v-else class="white-space-shadow">
+				<p class="whitespace-no-wrap">
+					{{ index }}. {{ item.title || item.name }}
+				</p>
+			</div>
 		</div>
 	</nuxt-link>
 </template>

@@ -9,9 +9,10 @@
 				<MovieORTvItem :index="index+1" :item="item" />
 			</div>
 		</div>
-		<div v-if="items.length !== 0 && page !== totalPages">
-			<Loading height="h-32" />
-			<Observer @intersec="$emit('intersec')" />
+		<div v-if="items.length !== 10 && page !== totalPages">
+			<Observer @intersec="$emit('intersec')">
+				<Loading height="h-32" />
+			</Observer>
 		</div>
 	</div>
 </template>

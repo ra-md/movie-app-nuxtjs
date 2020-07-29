@@ -46,6 +46,16 @@ h3 {
   @apply font-bold py-2 px-4 rounded;
 }
 
+.white-space-shadow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 10%;
+  background: linear-gradient(90deg, transparent, white);
+}
+
 @media (max-width: 768px) {
   .vue-horizontal-list .vhl-container {
     margin-right: 0!important;

@@ -73,7 +73,7 @@
 					<template v-slot:default="{ item }">
 						<div class="rounded-md h-full bg-white shadow-md overflow-hidden">
 							<img class="rounded-t-md" :src="`https://image.tmdb.org/t/p/w500/${item.profile_path}`">
-							<div class="item relative px-2 whitespace-no-wrap">
+							<div class="white-space-shadow relative px-2 whitespace-no-wrap">
 								<p class="font-medium">
 									{{ item.name }}
 								</p>
@@ -172,16 +172,6 @@ export default {
     height: 100%;
     width: 100%;
     position: absolute;
-	}
-
-	.item::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		right: 0;
-		height: 100%;
-		width: 10%;
-		background: linear-gradient(90deg, transparent, white);
 	}
 
 	@media (min-width: 1024px) {
