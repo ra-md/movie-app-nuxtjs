@@ -42,10 +42,6 @@ h3 {
   @apply text-lg font-semibold;
 }
 
-.btn {
-  @apply font-bold py-2 px-4 rounded;
-}
-
 .white-space-shadow::before {
   content: '';
   position: absolute;

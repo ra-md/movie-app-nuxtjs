@@ -1,6 +1,9 @@
 <template>
 	<div>
-		<div class="grid grid-cols-2 px-3 gap-4 mt-16 md:mt-8 mb-4 lg:gap-6 md:grid-cols-3 xl:grid-cols-5">
+		<h1 v-if="noResults">
+			No results
+		</h1>
+		<div v-else class="grid grid-cols-2 px-3 gap-4 mt-16 md:mt-8 mb-4 lg:gap-6 md:grid-cols-3 xl:grid-cols-5">
 			<div
 				v-for="(item, index) in itemsLoading"
 				:key="item.id"
@@ -9,7 +12,7 @@
 				<MovieORTvItem :index="index+1" :item="item" />
 			</div>
 		</div>
-		<div v-if="items.length !== 10 && page !== totalPages && !isTrending">
+		<div v-if="page !== totalPages && !isTrending && !noResults">
 			<Observer @intersec="$emit('intersec')">
 				<Loading height="h-32" />
 			</Observer>
@@ -44,7 +47,11 @@ export default {
 		},
 		isTrending: {
 			type: Boolean,
-			required: true
+			default: () => false
+		},
+		noResults: {
+			type: Boolean,
+			default: () => false
 		}
 	},
 	computed: {

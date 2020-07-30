@@ -18,12 +18,11 @@
 					/>
 				</div>
 				<div class="m-2">
-					<button
-						class="w-full btn bg-primary text-white hover:shadow-outline"
-						@click="moreResult"
-					>
-						More Results
-					</button>
+					<div @click="moreResult">
+						<Btn width="w-full">
+							More Results
+						</Btn>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -33,6 +32,7 @@
 <script>
 import SkeletonLoading from './SkeletonLoading';
 import QuickSearchItem from './QuickSearchItem';
+import Btn from '~/components/Btn';
 import debounce from '~/utils/debounce';
 import api from '~/api';
 
@@ -40,7 +40,8 @@ export default {
 	name: 'QuickSearchList',
 	components: {
 		SkeletonLoading,
-		QuickSearchItem
+		QuickSearchItem,
+		Btn
 	},
 	props: {
 		searchValue: {

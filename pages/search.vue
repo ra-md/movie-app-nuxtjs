@@ -2,20 +2,16 @@
 	<div>
 		<div class="flex flex-col items-center">
 			<div class="flex w-full mt-4 px-4 text-white">
-				<button
-					:disabled="mediaType === 'movie'"
-					class="bg-primary font-medium shadow rounded-md p-1 w-full transform hover:scale-105"
-					@click="changeMediaType('movie')"
-				>
+				<div class="w-full" @click="changeMediaType('movie')">
+					<Btn :disabled="mediaType === 'movie'" width="w-full">
 						Movies
-				</button>
-				<button
-					:disabled="mediaType === 'tv show'"
-					class="bg-blue-500 ml-4 font-medium shadow rounded-md p-1 w-full transform hover:scale-105"
-					@click="changeMediaType('tv show')"
-				>
-					Tv Show
-				</button>
+					</Btn>
+				</div>
+				<div class="w-full ml-4" @click="changeMediaType('tv show')">
+					<Btn :disabled="mediaType === 'tv show'" width="w-full" bg="bg-blue-500">
+						Tv Show
+					</Btn>
+				</div>
 			</div>
 			<SearchList :items="results" />
 			<b-pagination
@@ -32,11 +28,13 @@
 
 <script>
 import { BPagination } from 'bootstrap-vue';
+import Btn from '~/components/Btn';
 import api from '~/api';
 
 export default {
 	components: {
-		'b-pagination': BPagination
+		'b-pagination': BPagination,
+		Btn
 	},
 	data() {
 		return {
@@ -90,23 +88,11 @@ export default {
 </script>
 
 <style>
-button:disabled {
-	@apply bg-opacity-25 cursor-not-allowed;
-}
-
-button:disabled:hover {
-	@apply scale-100;
-}
-
 .pagination {
   display: flex;
   padding-left: 0;
   list-style: none;
   border-radius: .25rem;
-}
-
-.pagination button {
-  outline: none;
 }
 
 .page-link {

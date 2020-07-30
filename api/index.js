@@ -40,6 +40,12 @@ const api = {
 	},
 	popular(mediaType, page) {
 		return axiosInstance.get(`${mediaType}/popular`, params(page));
+	},
+	discover(mediaType, query, page) {
+		return axiosInstance.get(`discover/${mediaType}`, params(page, query));
+	},
+	getGenres(mediaType) {
+		return axiosInstance.get(`genre/${mediaType}/list`, params());
 	}
 };
 

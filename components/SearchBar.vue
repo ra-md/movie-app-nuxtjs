@@ -12,7 +12,7 @@
 					:value="searchValue"
 					@input="e => searchValue = e.target.value"
 				>
-				<Dropdown ref="dropdown" :media-type="mediaType">
+				<Dropdown ref="dropdown" :dropdown-value="mediaType">
 					<div @click="changeMediaType('movie'); toggleDropdown();">
 						<DropdownItem>Movie</DropdownItem>
 					</div>
