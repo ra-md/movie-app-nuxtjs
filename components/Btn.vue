@@ -2,7 +2,7 @@
 	<button
 		:disabled="disabled"
 		:class="isSpecial"
-		class="font-medium text-sm py-2 px-4 focus:shadow-outline focus:outline-none"
+		class="font-medium text-sm py-2 px-4 focus:outline-none"
 	>
 		<slot />
 	</button>
@@ -44,9 +44,9 @@ export default {
 	computed: {
 		isSpecial() {
 			if (this.special) {
-				return `rounded-full border border-primary transition-colors duration-300 ease-in-out hover:bg-primary hover:text-white ${this.active ? 'bg-primary text-white' : 'bg-none text-primary'}`;
+				return `rounded-full border-2 border-primary hover:shadow-outline ${this.active ? 'bg-primary text-white' : 'bg-none text-primary'}`;
 			} else {
-				return `${this.bg} ${this.textColor} ${this.width} ${this.rounded} hover:bg-opacity-75`;
+				return `${this.bg} ${this.textColor} ${this.width} ${this.rounded} hover:bg-opacity-75 focus:shadow-outline`;
 			}
 		}
 	}
