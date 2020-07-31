@@ -6,7 +6,7 @@
 		<div v-else>
 			<div class="grid grid-cols-2 px-3 gap-4 mb-4 lg:gap-6 md:grid-cols-3 xl:grid-cols-5">
 				<div v-for="(item, index) in itemsLoading" :key="item.id">
-					<Item :index="index+1" :item="item" :loading="loading" />
+					<Item :index="index+1" :item="item" :loading="loading" skeleton-loading-height="h-48" />
 				</div>
 			</div>
 			<div v-if="page !== totalPages && !isTrending && !loading">
