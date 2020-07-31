@@ -72,7 +72,7 @@
 				<vue-horizontal-list class="mb-4" :items="cast" :options="options">
 					<template v-slot:default="{ item }">
 						<div class="rounded-md h-full bg-white shadow-md overflow-hidden">
-							<img class="rounded-t-md" :src="`https://image.tmdb.org/t/p/w500/${item.profile_path}`">
+							<img class="rounded-t-md" :alt="item.title||item.name" :src="`https://image.tmdb.org/t/p/w500/${item.profile_path}`">
 							<div class="white-space-shadow relative px-2 whitespace-no-wrap">
 								<p class="font-medium">
 									{{ item.name }}
@@ -133,7 +133,7 @@ export default {
 		return {
 			options: {
 				responsive: [
-					{ end: 576, size: 2 },
+					{ end: 576, size: 3 },
 					{ start: 576, end: 1024, size: 5 },
 					{ size: 7 }
 				]
