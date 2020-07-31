@@ -33,7 +33,8 @@ module.exports = {
     }
   },
   variants: {
-    padding: ['first', 'responsive']
+    padding: ['first', 'responsive'],
+    borderColor: ['responsive', 'hover', 'focus','focus-within']
   },
   plugins: [],
   purge: {
