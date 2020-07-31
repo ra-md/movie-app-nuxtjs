@@ -1,3 +1,14 @@
 <template>
-	<h1>Tv Series</h1>
+	<Discover media-type="tv" />
 </template>
+
+<script>
+import Discover from '~/components/Discover';
+
+export default {
+	name: 'DiscoverMovie',
+	components: {
+		Discover
+	}
+};
+</script>
