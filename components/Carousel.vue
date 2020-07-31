@@ -8,7 +8,13 @@
               <SkeletonLoading v-if="data.length === 0" height="h-32 lg:h-56" rounded="rounded-md" />
               <nuxt-link v-else :to="`/${trending.title ? 'movies':'tv-show'}/${slug(trending)}`">
                 <div class="bg">
-                  <img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${trending.backdrop_path}`">
+                  <img
+                    class="rounded-md"
+                    width="500"
+                    height="281"
+                    :alt="trending.title||trending.name"
+                    :src="`https://image.tmdb.org/t/p/w500/${trending.backdrop_path}`"
+                  >
                 </div>
                 <h1 class="title">
                   {{ trending.title||trending.name }}
