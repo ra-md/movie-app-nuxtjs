@@ -1,34 +1,32 @@
 <template>
 	<div>
-		<h1 v-if="noResults">
+		<h1 v-if="noResults" class="text-center">
 			No results
 		</h1>
-		<div v-else class="grid grid-cols-2 px-3 gap-4 mt-16 md:mt-8 mb-4 lg:gap-6 md:grid-cols-3 xl:grid-cols-5">
-			<div
-				v-for="(item, index) in itemsLoading"
-				:key="item.id"
-				class="overflow-hidden rounded-md shadow-md bg-white transition-transform duration-300 ease-in-out transform hover:scale-105"
-			>
-				<MovieORTvItem :index="index+1" :item="item" />
+		<div v-else>
+			<div class="grid grid-cols-2 px-3 gap-4 mb-4 lg:gap-6 md:grid-cols-3 xl:grid-cols-5">
+				<div v-for="(item, index) in itemsLoading" :key="item.id">
+					<Item :index="index+1" :item="item" :loading="loading" />
+				</div>
 			</div>
-		</div>
-		<div v-if="page !== totalPages && !isTrending && !noResults">
-			<Observer @intersec="$emit('intersec')">
-				<Loading height="h-32" />
-			</Observer>
+			<div v-if="page !== totalPages && !isTrending && !loading">
+				<Observer @intersec="$emit('intersec')">
+					<Loading height="h-32" />
+				</Observer>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import MovieORTvItem from './MovieORTvItem';
+import Item from './Item';
 import Loading from '~/components/Loading';
 import Observer from '~/components/Observer';
 
 export default {
 	name: 'MovieORTvList',
 	components: {
-		MovieORTvItem,
+		Item,
 		Loading,
 		Observer
 	},
@@ -56,10 +54,17 @@ export default {
 	},
 	computed: {
 		itemsLoading() {
-			if (this.items.length === 0) {
+			if (this.loading) {
 				return [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 			} else {
 				return this.items;
+			}
+		},
+		loading() {
+			if (this.items.length === 0) {
+				return true;
+			} else {
+				return false;
 			}
 		}
 	}

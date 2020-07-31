@@ -1,29 +1,21 @@
 <template>
 	<client-only>
-		<vue-horizontal-list :items="isLoading ? fakeItems : items" :options="options">
+		<vue-horizontal-list :items="loading ? fakeItems : items" :options="options">
 			<template v-slot:default="{ item }">
-				<SkeletonLoading v-if="isLoading" height="h-32 md:h-48" rounded="rounded-md" />
-				<nuxt-link v-else :to="`/${item.title ? 'movies':'tv-show'}/${slug(item)}`">
-					<div class="item relative rounded-md shadow-md">
-						<img class="rounded-md" :src="`https://image.tmdb.org/t/p/w500/${item.poster_path}`">
-						<p class="movie-title">
-							{{ item.title || item.name }}
-						</p>
-					</div>
-				</nuxt-link>
+				<Item :item="item" :loading="loading" />
 			</template>
 		</vue-horizontal-list>
 	</client-only>
 </template>
 
 <script>
-import SkeletonLoading from './SkeletonLoading';
+import Item from './Item';
 import convertToSlug from '~/utils/convertToSlug';
 
 export default {
 	name: 'HorizontalList',
 	components: {
-		SkeletonLoading
+		Item
 	},
 	props: {
 		items: {
@@ -35,7 +27,7 @@ export default {
 		return {
 			options: {
 				responsive: [
-					{ end: 576, size: 2 },
+					{ end: 576, size: 3 },
 					{ start: 576, end: 1024, size: 5 },
 					{ size: 7 }
 				]
@@ -44,7 +36,7 @@ export default {
 		};
 	},
 	computed: {
-		isLoading() {
+		loading() {
 			if (this.items.length === 0) {
 				return true;
 			} else {
