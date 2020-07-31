@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="mt-16 md:mt-8">
 		<MovieORTvList
 			:items="results"
 			:page="page"
