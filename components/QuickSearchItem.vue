@@ -22,10 +22,7 @@ export default {
 	},
 	methods: {
 		slug(result) {
-			if (result.id) {
-				const slug = convertToSlug(result.title || result.name, result.id);
-				return slug;
-			}
+				return convertToSlug(result);
 		}
 	}
 };

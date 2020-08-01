@@ -84,10 +84,7 @@ export default {
   },
   methods: {
     slug(item) {
-      if (item.id) {
-        const slug = convertToSlug(item.title || item.name, item.id);
-        return slug;
-      }
+      return convertToSlug(item);
     }
   }
 };
