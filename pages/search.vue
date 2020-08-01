@@ -67,8 +67,12 @@ export default {
 		}
 	},
 	created() {
-		this.currentPage = this.$route.query.page || 1;
-		this.fetchSearch();
+		if (!this.$route.query.q) {
+			this.$router.push('/');
+		} else {
+			this.currentPage = this.$route.query.page || 1;
+			this.fetchSearch();
+		}
 	},
 	methods: {
 		async fetchSearch() {
