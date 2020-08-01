@@ -30,10 +30,10 @@
 </template>
 
 <script>
+import { debounce } from 'lodash';
 import SkeletonLoading from './SkeletonLoading';
 import QuickSearchItem from './QuickSearchItem';
 import Btn from '~/components/Btn';
-import debounce from '~/utils/debounce';
 import api from '~/api';
 
 export default {
@@ -74,7 +74,7 @@ export default {
 		},
 		searchDebounce: debounce(function() {
 			this.fetchSearch();
-		}, 2000, true),
+		}, 2000),
 		async fetchSearch() {
 			if (this.searchValue.length !== 0) {
 				const { data } = await api.search(this.mediaType, 1, this.searchValue);
