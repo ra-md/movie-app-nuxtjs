@@ -1,7 +1,11 @@
 <template>
 	<nuxt-link :to="`/${item.title ? 'movies':'tv-show'}/${slug(item)}`">
 		<div class="bg-white text-black rounded-md overflow-hidden shadow-md hover:shadow-outline">
-			<SkeletonLoading v-if="loading" :height="`${skeletonLoadingHeight} md:h-64`" />
+			<SkeletonLoading
+				v-if="loading"
+				:height="`${skeletonLoadingHeight} md:h-64`"
+				:width="skeletonLoadingWidth"
+			/>
 			<img
 				v-else
 				loading="lazy"
@@ -48,6 +52,10 @@ export default {
 		skeletonLoadingHeight: {
 			type: String,
 			default: 'h-28'
+		},
+		skeletonLoadingWidth: {
+			type: String,
+			default: 'w-full'
 		}
 	},
 	methods: {

@@ -13,7 +13,7 @@
 					</Btn>
 				</div>
 			</div>
-			<SearchList :items="results" />
+			<SearchList :items="results" :no-results="noResults" />
 			<b-pagination
 				v-if="results.length !== 0"
 				v-model="currentPage"
@@ -43,7 +43,8 @@ export default {
 			rows: 1,
       currentPage: 1,
       perPage: 1,
-      mediaType: 'movie'
+      mediaType: 'movie',
+      noResults: false
 		};
 	},
 	watch: {
@@ -70,12 +71,17 @@ export default {
 		this.fetchSearch();
 	},
 	methods: {
-		fetchSearch() {
-			api.search(this.mediaType, this.currentPage, this.$route.query.q)
-			.then((response) => {
-				this.rows = response.data.total_pages;
-				this.results = response.data.results;
-			});
+		async fetchSearch() {
+			const { data } = await api.search(this.mediaType, this.currentPage, this.$route.query.q);
+
+			if (data.total_results === 0) {
+				this.noResults = true;
+			} else {
+				this.noResults = false;
+			}
+
+			this.rows = data.total_pages;
+			this.results = data.results;
 		},
 		changeMediaType(mediaType) {
 			this.mediaType = mediaType;
