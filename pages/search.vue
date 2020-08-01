@@ -67,12 +67,14 @@ export default {
 		}
 	},
 	created() {
-		if (!this.$route.query.q) {
-			this.$router.push('/');
-		} else {
-			this.currentPage = this.$route.query.page || 1;
-			this.fetchSearch();
-		}
+		this.$nextTick(() => {
+			if (!this.$route.query.q) {
+				this.$router.push('/');
+			} else {
+				this.currentPage = this.$route.query.page || 1;
+				this.fetchSearch();
+			}
+		});
 	},
 	methods: {
 		async fetchSearch() {
