@@ -18,6 +18,7 @@
 
 <script>
 import Item from './Item';
+import generateArrayOfObjects from '~/utils/generateArrayOfObjects';
 
 export default {
 	name: 'SearchList',
@@ -37,7 +38,7 @@ export default {
 	computed: {
 		itemsLoading() {
 			if (this.loading) {
-				return [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+				return generateArrayOfObjects(10);
 			} else {
 				return this.items;
 			}

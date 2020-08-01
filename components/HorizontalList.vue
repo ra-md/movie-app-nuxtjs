@@ -1,6 +1,6 @@
 <template>
 	<client-only>
-		<vue-horizontal-list :items="loading ? fakeItems : items" :options="options">
+		<vue-horizontal-list :items="itemsLoading" :options="options">
 			<template v-slot:default="{ item }">
 				<Item :item="item" :loading="loading" />
 			</template>
@@ -11,6 +11,7 @@
 <script>
 import Item from './Item';
 import convertToSlug from '~/utils/convertToSlug';
+import generateArrayOfObjects from '~/utils/generateArrayOfObjects';
 
 export default {
 	name: 'HorizontalList',
@@ -31,11 +32,17 @@ export default {
 					{ start: 576, end: 1024, size: 5 },
 					{ size: 7 }
 				]
-			},
-			fakeItems: [{}, {}, {}, {}, {}, {}, {}, {}]
+			}
 		};
 	},
 	computed: {
+		itemsLoading() {
+			if (this.loading) {
+				return generateArrayOfObjects(8);
+			} else {
+				return this.items;
+			}
+		},
 		loading() {
 			if (this.items.length === 0) {
 				return true;

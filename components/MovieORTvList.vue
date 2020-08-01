@@ -22,6 +22,7 @@
 import Item from './Item';
 import Loading from '~/components/Loading';
 import Observer from '~/components/Observer';
+import generateArrayOfObjects from '~/utils/generateArrayOfObjects';
 
 export default {
 	name: 'MovieORTvList',
@@ -55,7 +56,7 @@ export default {
 	computed: {
 		itemsLoading() {
 			if (this.loading) {
-				return [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
+				return generateArrayOfObjects(10);
 			} else {
 				return this.items;
 			}

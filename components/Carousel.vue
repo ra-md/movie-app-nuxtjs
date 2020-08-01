@@ -35,6 +35,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 import api from '~/api';
 import convertToSlug from '~/utils/convertToSlug';
+import generateArrayOfObjects from '~/utils/generateArrayOfObjects';
 
 export default {
   name: 'Carousel',
@@ -68,7 +69,7 @@ export default {
   computed: {
     trendings() {
       if (this.data.length === 0) {
-        return [{}, {}, {}, {}, {}];
+        return generateArrayOfObjects(5);
       } else {
         return this.data;
       }
