@@ -45,11 +45,11 @@ export default {
 		},
 		isTrending: {
 			type: Boolean,
-			default: () => false
+			default: false
 		},
 		noResults: {
 			type: Boolean,
-			default: () => false
+			default: false
 		}
 	},
 	computed: {

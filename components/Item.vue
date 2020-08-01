@@ -43,11 +43,11 @@ export default {
 		},
 		index: {
 			type: Number,
-			default: () => 0
+			default: 0
 		},
 		skeletonLoadingHeight: {
 			type: String,
-			default: () => 'h-28'
+			default: 'h-28'
 		}
 	},
 	methods: {

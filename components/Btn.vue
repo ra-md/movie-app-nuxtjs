@@ -26,19 +26,19 @@ export default {
 		},
 		bg: {
 			type: String,
-			default: () => 'bg-primary'
+			default: 'bg-primary'
 		},
 		textColor: {
 			type: String,
-			default: () => 'text-white'
+			default: 'text-white'
 		},
 		width: {
 			type: String,
-			default: () => 'width-auto'
+			default: 'width-auto'
 		},
 		rounded: {
 			type: String,
-			default: () => 'rounded'
+			default: 'rounded'
 		}
 	},
 	computed: {

@@ -15,15 +15,11 @@ export default {
 		},
 		width: {
 			type: String,
-			default() {
-				return 'w-full';
-			}
+			default: 'w-full'
 		},
 		rounded: {
 			type: String,
-			default() {
-				return 'none';
-			}
+			default: 'none'
 		}
 	}
 };
