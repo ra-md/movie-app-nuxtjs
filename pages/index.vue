@@ -71,42 +71,36 @@ export default {
 		Carousel,
 		Loading
 	},
+	async asyncData() {
+		function fetchApi(mediaType, apiCallType, isTrending = false) {
+			return api[apiCallType](mediaType, isTrending ? 'week' : 1);
+		}
+
+		const [popularMovies, popularTv, trendingMovies, trendingTv, topRatedMovies, topRatedTv] = await Promise.all([
+			fetchApi('movie', 'popular'),
+			fetchApi('tv', 'popular'),
+			fetchApi('movie', 'trending', true),
+			fetchApi('tv', 'trending', true),
+			fetchApi('movie', 'topRated'),
+			fetchApi('tv', 'topRated')
+		]);
+
+		return {
+			popularMovies: popularMovies.data.results,
+			popularTv: popularTv.data.results,
+			trendingMovies: trendingMovies.data.results,
+			trendingTv: trendingTv.data.results,
+			topRatedMovies: topRatedMovies.data.results,
+			topRatedTv: topRatedTv.data.results
+		};
+	},
 	data() {
 		return {
-			popularMovies: [],
-			popularTv: [],
-			trendingMovies: [],
-			trendingTv: [],
-			topRatedMovies: [],
-			topRatedTv: [],
 			loading: true
 		};
 	},
-	created() {
-		Promise.all([
-				this.fetchApi('movie', 'popular'),
-				this.fetchApi('tv', 'popular'),
-				this.fetchApi('movie', 'trending', true),
-				this.fetchApi('tv', 'trending', true),
-				this.fetchApi('movie', 'topRated'),
-				this.fetchApi('tv', 'topRated')
-			])
-			.then(([popularMovies, popularTv, trendingMovies, trendingTv, topRatedMovies, topRatedTv]) => {
-				this.popularMovies = popularMovies.data.results;
-				this.popularTv = popularTv.data.results;
-				this.trendingMovies = trendingMovies.data.results;
-				this.trendingTv = trendingTv.data.results;
-				this.topRatedMovies = topRatedMovies.data.results;
-				this.topRatedTv = topRatedTv.data.results;
-			});
-	},
 	mounted() {
 		this.loading = false;
-	},
-	methods: {
-		fetchApi(mediaType, apiCallType, isTrending = false) {
-			return api[apiCallType](mediaType, isTrending ? 'week' : 1);
-		}
 	}
 };
 </script>

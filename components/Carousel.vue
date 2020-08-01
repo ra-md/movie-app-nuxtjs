@@ -5,7 +5,7 @@
         <VueSlickCarousel v-bind="settings">
           <div v-for="trending in trendings" :key="trending.id">
             <div class="trending px-2">
-              <SkeletonLoading v-if="data.length === 0" height="h-32 lg:h-56" rounded="rounded-md" />
+              <SkeletonLoading v-if="results.length === 0" height="h-32 lg:h-56" rounded="rounded-md" />
               <nuxt-link v-else :to="`/${trending.title ? 'movies':'tv-show'}/${slug(trending)}`">
                 <div class="bg">
                   <img
@@ -45,7 +45,7 @@ export default {
   },
   data() {
     return {
-      data: [],
+      results: [],
       settings: {
         dots: true,
         centerMode: true,
@@ -68,20 +68,16 @@ export default {
   },
   computed: {
     trendings() {
-      if (this.data.length === 0) {
+      if (this.results.length === 0) {
         return generateArrayOfObjects(5);
       } else {
-        return this.data;
+        return this.results;
       }
     }
   },
-  created() {
-    api.trending('all', 'week')
-    .then((res) => {
-      const data = res.data.results.splice(0, 5);
-
-      this.data = data;
-    });
+  async created() {
+    const { data } = await api.trending('all', 'week');
+    this.results = data.results.splice(0, 5);
   },
   methods: {
     slug(item) {

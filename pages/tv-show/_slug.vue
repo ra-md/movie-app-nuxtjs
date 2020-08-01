@@ -3,9 +3,9 @@
 		<Detail
 			type="TV"
 			:detail="tvShow"
-			:cast="credits"
+			:cast="cast"
 			:trailer="trailer"
-			:similar="similarShow"
+			:similar="similarTv"
 		/>
 	</div>
 </template>
@@ -19,37 +19,27 @@ export default {
 	components: {
 		Detail
 	},
-	data() {
-		return {
-			tvShow: {},
-			credits: [],
-			trailer: {},
-			similarShow: []
-		};
-	},
-	created() {
-		const slug = this.$route.params.slug.split('-');
-		const showId = slug[slug.length - 1];
+	async asyncData(context) {
+		try {
+			const slug = context.params.slug.split('-');
+			const tvId = slug[slug.length - 1];
 
-		api.details('tv', showId)
-		.then((res) => {
-			this.tvShow = res.data;
-		});
+			const [credits, details, trailer, similar] = await Promise.all([
+				api.credits('tv', tvId),
+				api.details('tv', tvId),
+				api.trailer('tv', tvId),
+				api.similar('tv', tvId)
+			]);
 
-		api.credits('tv', showId)
-		.then((res) => {
-			this.credits = res.data.cast;
-		});
-
-		api.trailer('tv', showId)
-		.then((res) => {
-			this.trailer = res.data.results[0];
-		});
-
-		api.similar('tv', showId)
-		.then((res) => {
-			this.similarShow = res.data.results;
-		});
+			return {
+				tvShow: details.data,
+				cast: credits.data.cast,
+				trailer: trailer.data.results[0],
+				similarTv: similar.data.results
+			};
+		} catch (error) {
+			context.error({ statusCode: 404, message: 'Page Not Found' });
+		}
 	},
 	head() {
 		return {
