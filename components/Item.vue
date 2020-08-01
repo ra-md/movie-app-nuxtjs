@@ -1,6 +1,13 @@
 <template>
-	<nuxt-link :to="`/${item.title ? 'movies':'tv-show'}/${slug(item)}`">
-		<div class="bg-white text-black rounded-md overflow-hidden shadow-md hover:shadow-outline">
+	<div
+		class="bg-white text-black rounded-md overflow-hidden shadow-md"
+		:class="{'hover:shadow-outline': !loading}"
+	>
+		<nuxt-link
+			:class="{'cursor-not-allowed': loading}"
+			:event="loading ? 'disabled' : 'click'"
+			:to="`/${item.title ? 'movies':'tv-show'}/${slug(item)}`"
+		>
 			<SkeletonLoading
 				v-if="loading"
 				:height="`${skeletonLoadingHeight} md:h-64`"
@@ -23,8 +30,8 @@
 					</p>
 				</div>
 			</div>
-		</div>
-	</nuxt-link>
+		</nuxt-link>
+	</div>
 </template>
 
 <script>
