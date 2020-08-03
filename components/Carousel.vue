@@ -16,7 +16,7 @@
                     :src="`https://image.tmdb.org/t/p/w500/${trending.backdrop_path}`"
                   >
                 </div>
-                <h1 class="title">
+                <h1 class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white text-base md:text-2xl">
                   {{ trending.title||trending.name }}
                 </h1>
               </nuxt-link>
@@ -101,7 +101,7 @@ export default {
     cursor: pointer;
   }
 
-  .bg::before {
+  .trending .bg::before {
     @apply rounded-md;
     content: '';
     position: absolute;
@@ -109,33 +109,6 @@ export default {
     width: 100%;
     background-color: rgba(0,0,0,0.6);
     box-shadow: inset 0 0 2em 1em rgba(0,0,0,0.7);
-    transition: opacity 0.5s;
-    opacity: 0;
-  }
-
-  .trending:hover .bg::before {
-    backdrop-filter: blur(5px);
     opacity: 1;
-  }
-
-  .trending .title {
-    opacity: 0;
-    transition: opacity 0.5s;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-  }
-
-  .trending:hover .title {
-    opacity: 1;
-  }
-
-  @media (max-width: 768px) {
-    .trending .title {
-      font-size: 16px;
-    }
   }
 </style>
