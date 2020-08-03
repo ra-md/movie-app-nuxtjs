@@ -69,11 +69,7 @@ export default {
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
-  build: {
-    extend(config) {
-      config.resolve.alias['vue'] = 'vue/dist/vue.common'
-    }
-  },
+  build: {},
   fontawesome: {
     icons: {
       solid: ['faStar', 'faFilm', 'faHourglass', 'faCircleNotch', 'faSearch', 'faTimes', 'faBars']
