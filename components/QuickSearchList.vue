@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import SkeletonLoading from './SkeletonLoading';
 import QuickSearchItem from './QuickSearchItem';
 import Btn from '~/components/Btn';
@@ -61,21 +61,19 @@ export default {
 	},
 	watch: {
 		searchValue() {
-			this.search();
+			this.loading = true;
+			this.searchDebounce();
 		},
 		mediaType() {
+			this.loading = true;
 			this.search();
 		}
 	},
 	methods: {
-		search() {
-			this.loading = true;
-			this.searchDebounce();
-		},
 		searchDebounce: debounce(function() {
-			this.fetchSearch();
+			this.search();
 		}, 2000),
-		async fetchSearch() {
+		async search() {
 			if (this.searchValue.length !== 0) {
 				const { data } = await api.search(this.mediaType, 1, this.searchValue);
 				this.results = data.results;
