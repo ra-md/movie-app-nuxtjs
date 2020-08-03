@@ -2,7 +2,7 @@
 	<div>
 		<div class="relative z-30 h-full w-full bg-white shadow-md md:shadow-none md:pt-4">
 			<div class="flex text-black h-full w-full relative bg-white border-gray-300 focus-within:border-primary md:rounded-md md:border-2">
-				<button class="md:hidden px-3" @click="closeSearchBar">
+				<button class="md:hidden px-3" @click="closeSearchBar" aria-label="close">
 					<font-awesome-icon class="text-md" icon="times" />
 				</button>
 				<input

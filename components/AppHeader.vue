@@ -2,7 +2,7 @@
 	<div>
 		<header class="shadow-md bg-primary text-white fixed top-0 left-0 right-0 py-2 px-3 z-30 md:hidden">
 			<div class="container mx-auto flex justify-between">
-				<button @click="openSidebar">
+				<button @click="openSidebar" aria-label="bars">
 					<font-awesome-icon class="text-md" icon="bars" />
 				</button>
 				<nuxt-link to="/">
@@ -10,7 +10,7 @@
 						Movie App
 					</h1>
 				</nuxt-link>
-				<button @click="openSearchBar">
+				<button @click="openSearchBar" aria-label="search">
 					<font-awesome-icon class="text-md" icon="search" />
 				</button>
 			</div>
