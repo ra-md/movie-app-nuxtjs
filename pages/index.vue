@@ -8,7 +8,7 @@
 				<Carousel />
 			</section>
 			<div class="mx-2 md:mx-0">
-				<div class="bg-gray-900 px-1 py-3 md:px-4 md:py-1 rounded-lg text-white shadow-lg my-8">
+				<div class="bg-gray-300 px-1 py-3 md:px-4 md:py-1 rounded-lg shadow-lg my-8">
 					<h1 class="text-center">
 						Movie
 					</h1>
@@ -31,7 +31,7 @@
 						<HorizontalList :items="topRatedMovies" />
 					</section>
 				</div>
-				<div class="bg-white px-1 py-3 md:px-4 md:py-1 rounded-lg shadow-lg mb-8">
+				<div class="bg-gray-300 px-1 py-3 md:px-4 md:py-1 rounded-lg shadow-lg mb-8">
 					<h1 class="text-center">
 						Tv Show
 					</h1>
