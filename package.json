@@ -17,13 +17,14 @@
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
+    "idb": "^5.0.4",
     "lodash": "^4.17.19",
     "nuxt": "^2.13.0",
     "vue-horizontal-list": "^1.0.7",
     "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {
-    "@fortawesome/free-brands-svg-icons": "^5.13.1",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@nuxtjs/eslint-config": "^3.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",

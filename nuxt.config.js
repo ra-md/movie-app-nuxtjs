@@ -72,7 +72,17 @@ export default {
   build: {},
   fontawesome: {
     icons: {
-      solid: ['faStar', 'faFilm', 'faHourglass', 'faCircleNotch', 'faSearch', 'faTimes', 'faBars']
+      regular: ['faBookmark'],
+      solid: [
+        'faStar',
+        'faFilm',
+        'faHourglass',
+        'faCircleNotch',
+        'faSearch',
+        'faTimes',
+        'faBars',
+        'faBookmark'
+      ]
     }
   }
 }
