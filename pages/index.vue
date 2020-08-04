@@ -64,14 +64,12 @@ import api from '~/api';
 import HorizontalList from '~/components/HorizontalList';
 import Carousel from '~/components/Carousel';
 import Loading from '~/components/Loading';
-import MovieOrTvSection from '~/components/MovieOrTvSection';
 
 export default {
 	components: {
 		HorizontalList,
 		Carousel,
-		Loading,
-		MovieOrTvSection
+		Loading
 	},
 	async asyncData() {
 		function fetchApi(mediaType, apiCallType, isTrending = false) {
