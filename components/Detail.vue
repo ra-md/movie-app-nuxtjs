@@ -12,10 +12,16 @@
 			</div>
 			<div class="bg-white shadow-md p-4 flex flex-col lg:w-3/5 lg:rounded-md lg:order-first">
 				<div class="lg:my-0 lg:order-last">
-					<div class="mb-1">
+					<div class="mb-1 md:my-1 flex items-center w-full justify-between">
 						<h1>
 							{{ detail.title || detail.name }} ({{ year }})
 						</h1>
+						<div class="text-2xl cursor-pointer">
+							<font-awesome-icon
+								:icon="[`${disableBookmark ? 'fas' : 'far'}`, 'bookmark']"
+								@click="[disableBookmark ? removeFromWatchlist() : addToWatchlist()]"
+							/>
+						</div>
 					</div>
 					<div class="mb-1">
 						<div>
@@ -88,6 +94,7 @@
 
 <script>
 import HorizontalList from '~/components/HorizontalList';
+import db from '~/utils/db';
 
 export default {
 	name: 'Detail',
@@ -120,6 +127,7 @@ export default {
 	},
 	data() {
 		return {
+			disableBookmark: false,
 			options: {
 				responsive: [
 					{ end: 576, size: 2 },
@@ -141,6 +149,28 @@ export default {
 				const year = this.detail.release_date.split('-')[0];
 				return year;
 			}
+		}
+	},
+	async created() {
+		const item = await db.getById(this.detail.id);
+
+		if (item) {
+			this.disableBookmark = true;
+		} else {
+			this.disableBookmark = false;
+		}
+	},
+	methods: {
+		addToWatchlist() {
+			db.set({
+				id: this.detail.id,
+				mediaType: this.type
+			});
+			this.disableBookmark = !this.disableBookmark;
+		},
+		removeFromWatchlist() {
+			db.delete(this.detail.id);
+			this.disableBookmark = !this.disableBookmark;
 		}
 	}
 };
