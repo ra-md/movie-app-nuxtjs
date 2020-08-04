@@ -1,9 +1,6 @@
 <template>
 	<div class="my-16 md:my-8">
-		<h1 v-if="noResults" class="text-center">
-			0 Watchlist
-		</h1>
-		<MovieORTvList v-else :items="watchlist" :page="0" :total-pages="0" />
+		<MovieORTvList :no-results="noResults" :items="watchlist" :page="0" :total-pages="0" />
 	</div>
 </template>
 
