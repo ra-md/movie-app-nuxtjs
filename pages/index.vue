@@ -12,7 +12,7 @@
 					<h1 class="text-center">
 						Movie
 					</h1>
-					<section class="my-4">
+					<section>
 						<h2 class="title">
 							Popular
 						</h2>
@@ -24,7 +24,7 @@
 						</h2>
 						<HorizontalList :items="trendingMovies" />
 					</section>
-					<section class="my-4">
+					<section>
 						<h2 class="title">
 							Top Rated
 						</h2>
@@ -35,7 +35,7 @@
 					<h1 class="text-center">
 						Tv Show
 					</h1>
-					<section class="my-4">
+					<section>
 						<h2 class="title">
 							Popular
 						</h2>
@@ -47,7 +47,7 @@
 						</h2>
 						<HorizontalList :items="trendingTv" />
 					</section>
-					<section class="my-4">
+					<section>
 						<h2 class="title">
 							Top Rated
 						</h2>

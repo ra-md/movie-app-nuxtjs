@@ -63,28 +63,30 @@
 				</div>
 			</div>
 		</div>
-		<client-only v-if="cast.length !== 0">
-			<h1 class="px-2">
-				Cast
-			</h1>
-			<vue-horizontal-list class="mb-4" :items="cast" :options="options">
-				<template v-slot:default="{ item }">
-					<div class="rounded-md h-full bg-white shadow-md overflow-hidden">
-						<img class="rounded-t-md" :alt="item.title||item.name" :src="`https://image.tmdb.org/t/p/w500/${item.profile_path}`">
-						<div class="white-space-shadow relative px-2 whitespace-no-wrap">
-							<p class="font-medium">
-								{{ item.name }}
-							</p>
-							<p>
-								{{ item.character }}
-							</p>
+		<client-only>
+			<div v-if="cast.length !== 0" class="px-2">
+				<h1>
+					Cast
+				</h1>
+				<vue-horizontal-list class="mb-4" :items="cast" :options="options">
+					<template v-slot:default="{ item }">
+						<div class="rounded-md h-full bg-white shadow-md overflow-hidden">
+							<img class="rounded-t-md" :alt="item.title||item.name" :src="`https://image.tmdb.org/t/p/w500/${item.profile_path}`">
+							<div class="white-space-shadow relative px-2 whitespace-no-wrap">
+								<p class="font-medium">
+									{{ item.name }}
+								</p>
+								<p>
+									{{ item.character }}
+								</p>
+							</div>
 						</div>
-					</div>
-				</template>
-			</vue-horizontal-list>
+					</template>
+				</vue-horizontal-list>
+			</div>
 		</client-only>
-		<div v-if="similar.length !== 0">
-			<h1 class="px-2">
+		<div v-if="similar.length !== 0" class="px-2">
+			<h1>
 				Similar Movies
 			</h1>
 			<HorizontalList :items="similar" />
@@ -129,6 +131,9 @@ export default {
 		return {
 			disableBookmark: false,
 			options: {
+				list: {
+					padding: 3
+				},
 				responsive: [
 					{ end: 576, size: 2 },
 					{ start: 576, end: 1024, size: 5 },

@@ -27,6 +27,9 @@ export default {
 	data() {
 		return {
 			options: {
+				list: {
+					padding: 3
+				},
 				responsive: [
 					{ end: 576, size: 3 },
 					{ start: 576, end: 1024, size: 5 },
@@ -61,51 +64,3 @@ export default {
 	}
 };
 </script>
-
-<style scoped>
-	.item {
-		cursor: pointer;
-		position: relative;
-		overflow: hidden;
-	}
-
-	.item::before {
-		@apply rounded-md;
-		content: '';
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		background: rgba(0,0,0,0.7);
-		opacity: 0;
-		box-shadow: inset 0 0 2em 1em rgba(0,0,0,0.7);
-		transition: opacity 0.5s;
-	}
-
-	.item:hover::before {
-		opacity: 1;
-		backdrop-filter: blur(5px);
-	}
-
-	.movie-title {
-		text-align: center;
-		top: 50%;
-		transform: translateY(-50%);
-		position: absolute;
-		width: 100%;
-		color: white;
-		font-weight: bold;
-		opacity: 0;
-		transition: opacity 0.5s;
-		padding: 5px;
-	}
-
-	.item:hover .movie-title {
-		opacity: 1;
-	}
-
-	@media (max-width: 768px) {
-		.movie-title {
-			font-size: 12px;
-		}
-	}
-</style>
