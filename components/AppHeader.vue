@@ -7,7 +7,7 @@
 				</button>
 				<nuxt-link to="/">
 					<h1 :class="{'text-left': $route.path === '/search'}" class="font-bold">
-						Movie App
+						Watchlist
 					</h1>
 				</nuxt-link>
 				<button aria-label="search" @click="openSearchBar">
