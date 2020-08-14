@@ -8,46 +8,46 @@
 				<Carousel />
 			</section>
 			<div class="mx-2 md:mx-0">
-				<div class="bg-gray-300 px-1 py-3 md:px-4 md:py-1 rounded-lg shadow-lg my-8">
+				<div class="bg-gray-300 px-1 py-3 rounded-lg shadow-lg my-8 md:px-4 md:pb-1 md:pt-4">
 					<h1 class="text-center">
 						Movie
 					</h1>
-					<section>
+					<section class="my-4">
 						<h2 class="title">
 							Popular
 						</h2>
 						<HorizontalList :items="popularMovies" />
 					</section>
-					<section>
+					<section class="my-4">
 						<h2 class="title">
 							Trending
 						</h2>
 						<HorizontalList :items="trendingMovies" />
 					</section>
-					<section>
+					<section class="my-4">
 						<h2 class="title">
 							Top Rated
 						</h2>
 						<HorizontalList :items="topRatedMovies" />
 					</section>
 				</div>
-				<div class="bg-gray-300 px-1 py-3 md:px-4 md:py-1 rounded-lg shadow-lg mb-8">
+				<div class="bg-gray-300 px-1 py-3 rounded-lg shadow-lg mb-8 md:px-4 md:py-1 md:pt-4">
 					<h1 class="text-center">
 						Tv Show
 					</h1>
-					<section>
+					<section class="my-4">
 						<h2 class="title">
 							Popular
 						</h2>
 						<HorizontalList :items="popularTv" />
 					</section>
-					<section>
+					<section class="my-4">
 						<h2 class="title">
 							Trending
 						</h2>
 						<HorizontalList :items="trendingTv" />
 					</section>
-					<section>
+					<section class="my-4">
 						<h2 class="title">
 							Top Rated
 						</h2>
